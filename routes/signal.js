@@ -75,8 +75,7 @@ module.exports = signal = (router) => {
         } else {
          
           let tag = tagarray[Math.floor(Math.random() * tagarray.length)]
-          //capture all venues that were randomly selected
-         
+                   
           tag.detectedOn = Date.now()
           delete tag._id
           let message = `Product: ${tag.name} Detected: ${tag.detectedOn} -----`
@@ -87,7 +86,7 @@ module.exports = signal = (router) => {
                 client.send(JSON.stringify([message]))
             }
             });
-          
+          pub.publish('detect', JSON.stringify([tag]))
           iid = setTimeout(loop, 3000)
         }
       })()
