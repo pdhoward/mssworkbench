@@ -1,6 +1,31 @@
 
 let output;
 let websocket;
+let url = ''
+let socketurl = ''
+
+if (location.hostname == 'localhost' ) {
+    url = `http://${location.host}${'/api/signal'}`
+    socketurl = `ws://${location.host}`
+} else {
+    url = 'https://msspub.onrender.com/api/signal'
+    socketurl = `wss://msskafka.onrender.com`
+}
+
+
+const change = () => { 
+    fetch(url)       
+    let elem = document.getElementById("jsbutton");
+    if (elem.value=="Stop Signals") {
+     elem.value = "Start Signals"
+     elem.className="btn btn-lg btn-success"
+    } else {
+     elem.value = "Stop Signals"
+     elem.className="btn btn-lg btn-danger"
+    }
+}
+
+
 const setbg = (color) => {
     document.getElementById("message").style.background=color
     }

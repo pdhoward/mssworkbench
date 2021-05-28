@@ -51,16 +51,28 @@ if (dbProximity.isConnected()) {
   });
 }
 
+let isPublishing = false
+let iid 
+
 module.exports = signal = (router) => {
 	router.use(async(req, res, next) => {
+
+     // if iid is detected the call to this route must be to stop
+     console.log(isPublishing, iid)
+     
+     if (isPublishing) {
+      clearTimeout(iid)
+      isPublishing === false
+      next()
+    } else {
+      isPublishing === true
+    }
     
     console.log(`Captured ${tagarray.length} tags`)
     console.log(tagarray[100])
 
     const startSignals = (duration, userid) => new Promise(resolve => {
-      const start = new Date().getTime();
-    
-      let iid;   
+      const start = new Date().getTime();    
     
       (async function loop() {
         const now = new Date().getTime()

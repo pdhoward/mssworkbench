@@ -58,7 +58,7 @@ require('../routes/signal')(signal)
 
 app.use(header)
 app.get('/about', about)
-app.get('/signal', signal)
+app.get('/api/signal', signal)
 
 // start server
 server.listen(Port, () => console.log(g(`listening on port ${Port}`)))
