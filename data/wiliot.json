@@ -1,0 +1,32 @@
+[
+    {
+    "timestamp": "2017-04-28T08:16:13Z",
+    "type": "iBeacon",
+    "mac": "CC0101000011",
+    "firm": "Wiliot",    
+    "ibeaconUuid": "FDA50693A4E24FB1AFCFC6EB07647825",
+    "ibeaconMajor": 10001,
+    "ibeaconMinor": 19641,
+    "ibeaconTxPower": -58,
+    "tag": "gillette-1-00470",
+    "price": "6.43",
+    "currency": "USD",
+    "maxtemp": "89",
+    "scale": "fahrenheit",
+    "destinationmarket": "Target, Rancho Bernardo, CA",
+    "product": "Mach 3",
+    "description": "Mach 3 razors",
+    "productiondate": "July 7, 2020",
+    "traceability": "Made Cincinatti, QA Btach 09127665. Distributor Reltates Supplies #345",
+    "recyclable": "terracycle",
+    "rssi": -76,
+    "battery": 100
+    },   
+    {
+    "timestamp": " 2017-04-28T08:16:14Z",
+    "type":"Gateway",
+    "mac": "EF3101000034",
+    "gatewayFree": 78,
+    "gatewayLoad":0.5
+    }
+]

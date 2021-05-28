@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RED ENGINE</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h3 class="text-center"><span></span> REAL TIME VENUE SIGNALING</h3>
+      <h5 class="text-center"><span></span> Red Engine Emulator</h5>
+      <br>
+      <div class="text-center">
+        <a href="/about"><button class="btn btn-lg btn-primary"> About </button></a>
+        <a href="/signal"><button class="btn btn-lg btn-danger"> Start Signals </button></a>
+        
+      </div>
+      <div class="text-center">
+        <form>
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+          <label for="country">Country</label>
+          <select id="country" name="country">
+            <option value="australia">Australia</option>
+            <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+          </select>          
+          <textarea name="message" id="message" onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')">Enter your comment here...</textarea>
+         
+        </form> 
+        <button class="btn btn-lg btn-primary" onClick="fire()">Send Message</button>
+        <div id="messages"></div>
+        <div id="sysoutput"></div>
+      </div>
+      
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p><a href="https://proximitymachine.netlify.app/">Strategic Machines</a> </p>
+      </div>
+    </footer>
+  </div>
+  <script language="javascript" type="text/javascript" src="app.js"></script>
+  
+</body>
+</html>

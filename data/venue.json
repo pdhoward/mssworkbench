@@ -1,0 +1,84 @@
+{ "venue":
+	{		
+		"enterprise": ["Whole Foods"],
+		"market": ["Grocery"],
+		"geography": ["Austin Area"],
+		"lifemode": ["Affluent Estates"],
+		"isActive": true,
+		"isVerified": {
+			"verifiedDate": null,
+			"verifiedMethod": "inspection",
+			"result": true
+		},
+		"type": "Venue",
+		"monitors": "",
+		"label": "Corner Grocery Store",
+		"name": "Corner Grocery Store",
+		"slug": "",
+		"overview": "Libero omnis aut odio quia est. Reprehenderit sed quam ut est eum ullam facere et. Dolorem et voluptatem molestiae vero et. Minus vero sed et quia. Doloribus quisquam cum corporis molestiae.",
+		"stage": "publish",
+		"propertyType": "Commercial",
+		"condition": "Poor",		
+        "website": "https://example.com/",
+        "phone": "+12125551212",
+		"termsAndCondition": "Qui sit omnis rerum rerum natus cumque earum qui. Optio facilis doloremque. Corrupti est est aperiam molestias animi animi minima neque. Enim numquam et consectetur dicta error doloribus molestiae quibusdam. Quia est est.",
+		"attributes": [
+			{
+				"id": "weeklytraffic",
+				"value": 8000
+			},
+			{
+				"id": "dailypeak",
+				"value": "Monday"
+			},
+			{
+				"id": "operatinghours",
+				"value": "https://ogp.me/"
+			}			
+		],
+		"images": {
+			"id": 90096,
+			"url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1.jpg",
+			"thumb_url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg"
+		},
+		"image": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-1_thumb.jpg",
+		"gallery": [
+			{
+				"id": 11287,
+				"url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-2_thumb.jpg"
+			},
+			{
+				"id": 51759,
+				"url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-3_thumb.jpg"
+			},
+			{
+				"id": 1888,
+				"url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-4_thumb.jpg"
+			}
+		],
+		"categories": [
+			{
+				"id": 87372,				
+				"name": "supermarket",
+				"image": {
+					"id": 22552,
+					"url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-5.jpg"
+				}
+			},
+			{
+				"id": 96762,				
+				"name": "grocer",
+				"image": {
+					"id": 77761,
+					"url": "http://s3.amazonaws.com/redqteam.com/tripfinder-images/hotel-6.jpg"
+				}
+			}
+		],
+		"adRates": [
+			{"sch102": 1607447509},
+			{"sch117": 1575825109},
+			{"sch127": 1544289109}
+		],		
+		"isNegotiable": false	
+	}
+}

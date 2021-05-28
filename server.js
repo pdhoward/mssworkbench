@@ -1,0 +1,10 @@
+
+require('dotenv').config({ silent: true });
+
+////////////////////////////////////////////////////////////////
+////////       Stream to Message Connector              ////////
+//////             Kafka to Redis                      ///////
+//////c strategic machines 2018 all rights reserved   ///////
+////////////////////////////////////////////////////////////
+
+const server = require('./xserver/index.js');
