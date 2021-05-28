@@ -47,12 +47,10 @@ server.on('upgrade', (request, socket, head) => {
 const about =               express.Router()
 const header =              express.Router()
 const signal =              express.Router({mergeParams: true})
-const dash =                express.Router()
 
 require('../routes/about')(about)
 require('../routes/header')(header)
 require('../routes/signal')(signal)
-require('../routes/dash')(dash)
 
 /////////////////////////////////////////////////////////
 /////////////////// API CATALOGUE //////////////////////
@@ -61,7 +59,6 @@ require('../routes/dash')(dash)
 app.use(header)
 app.get('/about', about)
 app.get('/signal', signal)
-//app.get('/dash', dash)
 
 // start server
 server.listen(Port, () => console.log(g(`listening on port ${Port}`)))

@@ -31,15 +31,13 @@ const connect = () => {
 // event handlers
 const onOpen = (evt) =>{
     //called as soon as a connection is opened
-    output.innerHTML += "<p>CONNECTED TO SERVER</p>";
+    output.innerHTML += "<p class = 'response'>CONNECTED TO SERVER</p>";
 }
 const onClose = (evt) => {
     //called when connection is severed
     output.innerHTML += "<p>DISCONNECTED</p>";
 } 
-const onMessage = (evt) => {
-    //called on receipt of message
-    output.innerHTML += "<p class = 'response'>Message Incoming </p>";
+const onMessage = (evt) => {   
     const messages = JSON.parse(evt.data);
     messages.forEach(addMessage);
 } 

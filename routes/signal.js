@@ -1,6 +1,6 @@
 
 const {dbProximity} =       require('../db')
-const { g, b, gr, r, y } =  require('../console')
+const { g } =  require('../console')
 
 // websocketevents and redi events
 const {wss} =               require('../events');
@@ -26,16 +26,12 @@ startBroadcasts()
 
 //////////////////////////////////////////
 
-let cnt = 0
+
 let tagarray = []
-let venuearray = []
-let subscriberarray = []
-let activevenues = []
 
-// Initialization process to load a random set of venues and brand/tags
+// Initialization process to load a random set of tags
 
-const init = async () => {
-  
+const init = async () => {  
   
   await dbProximity.db('proximity').collection('tags')
     .aggregate([{$sample: {size: 1000}}])
@@ -112,7 +108,7 @@ module.exports = signal = (router) => {
     res.status(200).redirect('/')
     // Function to start generating random product signals 
    
-    startRandomSignals(15000, 100, 'mss')     
+    startRandomSignals(3600000, 100, 'mss')    // 60*1000*60 
 
     next()
   })  
