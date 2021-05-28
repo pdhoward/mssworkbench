@@ -4,7 +4,9 @@
   "description": "Kafka to Redis connector",
   "main": "server.js",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "node server"
+  },
   "repository": {
     "type": "git",
     "url": ""
