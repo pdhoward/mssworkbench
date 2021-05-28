@@ -58,14 +58,14 @@ module.exports = signal = (router) => {
 	router.use(async(req, res, next) => {
 
      // if iid is detected the call to this route must be to stop
-     console.log(isPublishing, iid)
+     //console.log(isPublishing, iid)
      
      if (isPublishing) {
       clearTimeout(iid)
-      isPublishing === false
+      isPublishing = false
       next()
     } else {
-      isPublishing === true
+      isPublishing = true
     }
     
     console.log(`Captured ${tagarray.length} tags`)
@@ -99,7 +99,11 @@ module.exports = signal = (router) => {
             }
             });
           pub.publish('detect', JSON.stringify([tag]))
-          iid = setTimeout(loop, 3000)
+
+          if (isPublishing) {
+            iid = setTimeout(loop, 3000)
+          }
+          
         }
       })()
 
