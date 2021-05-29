@@ -7,26 +7,39 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "nodemon"
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
     "url": ""
   },
   "dependencies": {
-    "chalk": "^2.4.2",
+    "bcrypt": "^5.0.1",
+    "chalk": "^4.1.0",
     "cors": "^2.8.5",
-    "dotenv": "^4.0.0",
-    "express": "^4.16.4",
+    "dayjs": "^1.10.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "if-env": "^1.0.4",
     "ioredis": "^4.19.4",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "3.6.3",
-    "node-fetch": "^2.6.0",
+    "jwt-decode": "^3.1.2",
+    "lru-cache": "^6.0.0",
+    "moment-timezone": "^0.5.33",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.3",
+    "node-fetch": "^2.6.1",
+    "node-rdkafka": "^2.10.1",
+    "nodemailer": "^6.5.0",
     "serve-favicon": "^2.5.0",
     "uuid": "^8.3.2",
+    "winston": "^3.3.3",
     "valid-url": "^1.0.9",
-    "ws": "^7.4.2"
+    "ws": "^7.4.4"
   },
   "engines": {},
   "devDependencies": {

@@ -1,5 +1,6 @@
-
-const {dbProximity} =       require('../db')
+const {kafka,
+       fetchRandomTag,
+       fetchRandomSubscriber } =  require('../controllers')
 const { g } =  require('../console')
 
 // websocketevents and redi events
@@ -29,106 +30,85 @@ startBroadcasts()
 
 let tagarray = []
 
-// Initialization process to load a random set of tags
+let producer = {}
 
-const init = async () => {  
-  
-  await dbProximity.db('proximity').collection('tags')
-    .aggregate([{$sample: {size: 1000}}])
-    .toArray()
-    .then(data => {      
-      tagarray = [...data]
-    })
- 
+/////////////////////////////////////////////
+//////////   initialize producer ///////////
+///////////////////////////////////////////
+const init = async () => {
+  //producer = await kafkaproducer() 
 }
-if (dbProximity.isConnected()) {
-  console.log(g(`DB Ready`))
-  init();
-} else {
-  dbProximity.connect().then(function () {
-    console.log(g(`Reconnect to DB`))
-    init();
-  });
-}
+
+init()
 
 let isPublishing = false
-let iid 
-
+let id
+let x = 0
 module.exports = signal = (router) => {
 	router.use(async(req, res, next) => {
+    const randomStream = (int) => {
+      
+      id = setInterval(async function() {        
+        
+        let tag = await fetchRandomTag()      
+        
+        x++
+        tag[0].unitsales = Math.floor(Math.random() * (1000 - 100) + 100);
+        tag[0].price = Math.floor(Math.random() * (1000 - 100) + 100) / 100;
+        tag[0].seq = x       
+      
+        // sockets
+        wss.clients.forEach((client) => {      
+          if (client.readyState === 1) {
+              client.send(JSON.stringify(tag))
+          }
+        })
+         // kafka producer - 
+         try {
+            //let result = await kafka(producer, tag)          
+            //console.log(result, x)
+          } catch (e) {
+            //console.log(e)
+          }
+      }, int)
+    }  
+     // Function to start generating random product signals for x number of Venues
+    if (isPublishing) {      
+      clearInterval(id)      
+      isPublishing= false
+      // let client know that streaming has stopped
+      let status = [{
+        type: 'status',
+        state: false
+      }]
+      wss.clients.forEach((client) => {      
+        if (client.readyState === 1) {
+            client.send(JSON.stringify(status))
+        }
+      })
 
-     // if iid is detected the call to this route must be to stop
-     //console.log(isPublishing, iid)
-     
-     if (isPublishing) {
-      clearTimeout(iid)
-      isPublishing = false
-      next()
+      id = {}
+      res.status(200).end()
     } else {
       isPublishing = true
-    }
-    
-    console.log(`Captured ${tagarray.length} tags`)
-    console.log(tagarray[100])
-
-    const startSignals = (duration, userid) => new Promise(resolve => {
-      const start = new Date().getTime();    
-    
-      (async function loop() {
-        const now = new Date().getTime()
-        const delta = now - start
-        
-        //elapsed - close function
-        if (delta >= duration) {
-          clearTimeout(iid);
-          resolve(userid);
-
-        //take action
-        } else {
-         
-          let tag = tagarray[Math.floor(Math.random() * tagarray.length)]
-                   
-          tag.detectedOn = Date.now()
-          delete tag._id
-          let message = `Product: ${tag.name} Detected: ${tag.detectedOn} -----`
-             
-           // constant WebSocket.OPEN = 1
-          wss.clients.forEach((client) => {
-            if (client.readyState === 1) {
-                client.send(JSON.stringify([message]))
-            }
-            });
-          pub.publish('detect', JSON.stringify([tag]))
-
-          if (isPublishing) {
-            iid = setTimeout(loop, 3000)
-          }
-          
+      let status = [{
+        type: 'status',
+        state: true
+      }]
+      wss.clients.forEach((client) => {      
+        if (client.readyState === 1) {
+            client.send(JSON.stringify(status))
         }
-      })()
-
-    });
-
-    const startRandomSignals = (time, i, prefix) => {
-
-      return new Promise(async (resolve, reject) => {
-        let venuename = prefix + i.toString()
-        await startSignals(time, venuename)
-          .then(v => console.log(`${v} finished`))
-        resolve()
       })
-      
+
+      randomStream(2000) 
+      res.status(200).end() 
     }
-     
-    res.status(200).redirect('/')
-    // Function to start generating random product signals 
-   
-    startRandomSignals(3600000, 100, 'mss')    // 60*1000*60 
+    next() 
 
-    next()
-  })  
+});
 }
-
+   
 
  
  

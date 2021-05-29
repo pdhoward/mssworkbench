@@ -13,12 +13,12 @@ const register = (socket, wss) => {
   socketevents(socket, wss)  
 }
 
-// const events = () => {
-//   return new Promise(async (resolve, reject) => {
-//     let {pub, redis} = await redisevents()
-//     resolve({pub, redis}) 
-//   })  
-// }
+const events = () => {
+  return new Promise(async (resolve, reject) => {
+    let {pub, redis} = await redisevents()
+    resolve({pub, redis}) 
+  })  
+}
 
 wss.on("connection", (socket, req) => {
     register(socket, wss)
@@ -27,6 +27,6 @@ wss.on("connection", (socket, req) => {
 })
 
 module.exports = {
-      wss
-      //events
+      wss,
+      events
     }
