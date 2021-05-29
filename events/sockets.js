@@ -10,16 +10,16 @@ const messages = ['Archived messages']
 
 const socketevents = (ws, wss) => {   
         
-    ws.on('message', (message) => {
-        console.log('received:', message);
-        messages.push(message)
-            // constant WebSocket.OPEN = 1
-        wss.clients.forEach((client) => {
-        if (client.readyState === 1) {
-            client.send(JSON.stringify([message]))
-        }
-        });
-    });
+    // ws.on('message', (message) => {
+    //     console.log('received:', message);
+    //     messages.push(message)
+    //         // constant WebSocket.OPEN = 1
+    //     wss.clients.forEach((client) => {
+    //     if (client.readyState === 1) {
+    //         client.send(JSON.stringify([message]))
+    //     }
+    //     });
+    // });
 
     ws.on('open', () => {
         console.log('Connected');

@@ -1,6 +1,5 @@
 const WebSocket =               require('ws')
 const {socketevents} =          require('./sockets')
-//const {dbevents} =              require('./db')
 const { g, b, gr, r, y } =      require('../console');
 
 ////////////////////////////////////////////////////////////////
@@ -12,15 +11,14 @@ const wss = new WebSocket.Server({noServer: true });
 
 const register = (socket, wss) => {    
   socketevents(socket, wss)  
-  //dbevents()
 }
 
-const events = () => {
-  return new Promise(async (resolve, reject) => {
-    let {pub, redis} = await redisevents()
-    resolve({pub, redis}) 
-  })  
-}
+// const events = () => {
+//   return new Promise(async (resolve, reject) => {
+//     let {pub, redis} = await redisevents()
+//     resolve({pub, redis}) 
+//   })  
+// }
 
 wss.on("connection", (socket, req) => {
     register(socket, wss)
@@ -29,6 +27,6 @@ wss.on("connection", (socket, req) => {
 })
 
 module.exports = {
-      wss,
-      events
+      wss
+      //events
     }
