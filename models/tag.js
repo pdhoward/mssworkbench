@@ -1,21 +1,19 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
 
-const tagSchema = new Schema({
-  _id: Number,
-  type: String,   // 'tag'
-  class: String,  // product, person, place, fixture, 
-  tagid: String,
-  brandid: String,
-  imdbid: String,  // id for imdb object and location coordinates
-  name: String,
-  description: String,
-  temperature: Number, 
-  scale: String,  // fahrenheit, celsius
-  timestamp: Date,
-  updatedOn: Date
-}, {collection: 'tags'});
 
-const Tag = mongoose.model("Tag", tagSchema);
+const tagSchema = new mongoose.Schema({
+		type: { type: String },
+		class: { type: String },
+		tagid: { type: String},
+        brandid: String,
+        imdbid: String,
+        name: String,
+        description: String,
+        temperature: String,
+        scale: String,
+        timestamp: Date,
+        updatedOn: Date
 
-module.exports = Tag;
+	})
+
+module.exports = tagSchema

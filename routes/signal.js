@@ -63,6 +63,9 @@ module.exports = signal = (router) => {
               client.send(JSON.stringify(tag))
           }
         })
+
+        // Redis Message
+        pub.publish('detect', JSON.stringify(tag))
          // kafka producer - 
          try {
             //let result = await kafka(producer, tag)          

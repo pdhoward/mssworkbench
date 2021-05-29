@@ -60,7 +60,7 @@ const Counter = () => {
       <div className="card text-center">
         <div className="card-header bg-primary text-white">
            <h3>MSS International Lab</h3>
-           <h4>Generate Workbench Message Queue from Kafka Stream</h4>
+           <h4>Workbench Messages Sent From Kafka Stream</h4>
         </div>
         <CardBody
              product={product}            
