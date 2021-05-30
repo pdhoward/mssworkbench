@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 const tagSchema = new mongoose.Schema({
 		type: { type: String },
 		class: { type: String },
