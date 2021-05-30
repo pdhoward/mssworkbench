@@ -1,6 +1,23 @@
 const {conn} =              require('../db')
-const tagSchema = 	        require('../models/Tag.js')
+//const tagSchema = 	        require('../models/Tag.js')
 const { g, b, gr, r, y } =  require('../console')
+
+const mongoose = require('mongoose')
+
+const tagSchema = new mongoose.Schema({
+		type: { type: String },
+		class: { type: String },
+		tagid: { type: String},
+        brandid: String,
+        imdbid: String,
+        name: String,
+        description: String,
+        temperature: String,
+        scale: String,
+        timestamp: Date,
+        updatedOn: Date
+
+	})
 
 ///////////////////////////////////
 ////   constants              ////
