@@ -1,5 +1,7 @@
 
 require('dotenv').config({ silent: true });
+const { SERVER_PORT } = require( "./config")
+const { start } = require( "./xserver")
 
 ////////////////////////////////////////////////////////////////
 ////////       Stream to Message Connector              ////////
@@ -7,4 +9,9 @@ require('dotenv').config({ silent: true });
 //////c strategic machines 2018 all rights reserved   ///////
 ////////////////////////////////////////////////////////////
 
-const server = require('./xserver/index.js');
+async function main() {
+	await start(SERVER_PORT);
+	console.log(`Server started at http://localhost:${SERVER_PORT}`);
+}
+
+main().catch(error => console.error(error));
