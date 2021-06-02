@@ -44,6 +44,7 @@ const kafkaconsumer = () => {
 module.exports = {
       wss,
       events,
+      kafka,
       kafkaproducer,
       kafkaconsumer
     }
