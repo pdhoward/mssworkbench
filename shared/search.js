@@ -1,6 +1,6 @@
-export const SearchStyle = `case-sensitive` | `regex` | ``
+exports.SearchStyle = `case-sensitive` | `regex` | ``
 
-export function Includes(text, pattern, searchStyle){
+exports.Includes = (text, pattern, searchStyle) =>{
     switch (searchStyle) {
         case `case-sensitive`:
             return text.includes(pattern)
