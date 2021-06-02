@@ -138,11 +138,12 @@ const TopicQueryInput = { topic: String, partition: Number, limit: Number, offse
 
 const schemaRegistry = new SchemaRegistry({ uri: SCHEMA_REGISTRY_URL });
  
-const KafkaClient = () => {
-   let Kafka = Kafka;
-   let Admin = Admin;
- 
-   let Connect = async () => {
+function KafkaClient () {
+   
+  this.Kafka = Kafka;
+  this.Admin = Admin;
+   
+  this.Connect = async () => {
      let Kafka = new Kafka({
        clientId: 'MSS',
        ssl: true,
@@ -166,8 +167,6 @@ const KafkaClient = () => {
  }
  
  const kafka = new KafkaClient();
-  
- 
  
  async function withRetry(name, fun = () => new Promise()) {
    try {

@@ -1,11 +1,12 @@
 const WebSocket =               require('ws')
+const {kafka} =                 require('./kafka')
 const {socketevents} =          require('./sockets')
+const {redisevents} =           require('./redis')
 const { g, b, gr, r, y } =      require('../console');
 
 ////////////////////////////////////////////////////////////////
 ////////////////Register Events and Start Server //////////////
 //////////////////////////////////////////////////////////////
-const {redisevents} =           require('./redis')
 
 const wss = new WebSocket.Server({noServer: true });
 
@@ -26,7 +27,23 @@ wss.on("connection", (socket, req) => {
     console.info("Total connected clients:", wss.clients.size);
 })
 
+const kafkaproducer = () => {
+  return new Promise(async (resolve, reject) => {
+    let {producer} = await kafka()
+    resolve(producer) 
+  })  
+}
+
+const kafkaconsumer = () => {
+  return new Promise(async (resolve, reject) => {
+    let {consumer} = await kafka()   
+    resolve(consumer) 
+  })  
+}
+
 module.exports = {
       wss,
-      events
+      events,
+      kafkaproducer,
+      kafkaconsumer
     }
