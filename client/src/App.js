@@ -11,7 +11,7 @@ import { Groups } from "./kafka/groups"
 import { Members } from "./kafka/members"
 import { Subjects } from "./schema-registry/subjects"
 import { Versions } from "./schema-registry/versions"
-import { GlobalThemeProvider } from "./component/theme_hook"
+import { GlobalThemeProvider } from "./components/theme_hook"
 
 import "./style.css";
 import { Connectors } from "./kafka-connect/connectors";

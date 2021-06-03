@@ -1,12 +1,12 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { RouteComponentProps } from "react-router-dom";
-import { CellProps, CellButton } from '../component/cell_button';
-import { KafkaToolbar} from '../component/toolbar';
-import { DataView} from '../component/data_view';
-import { ErrorMsg} from '../component/error_msg';
-import { Url } from "../component/url";
-import { CancelToken, Loader } from "../component/loader";
+import { CellProps, CellButton } from '../components/cell_button';
+import { KafkaToolbar} from '../components/toolbar';
+import { DataView} from '../components/data_view';
+import { ErrorMsg} from '../components/error_msg';
+import { Url } from "../components/url";
+import { CancelToken, Loader } from "../components/loader";
 
 // type State = {
 //     loading: boolean;

@@ -1,14 +1,14 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { KafkaToolbar } from '../component/toolbar';
-import { DataView } from '../component/data_view';
+import { KafkaToolbar } from '../components/toolbar';
+import { DataView } from '../components/data_view';
 import { RouteComponentProps } from "react-router-dom";
 import Link from '@material-ui/core/Link';
-import { ErrorMsg} from '../component/error_msg';
-import { Url } from "../component/url";
+import { ErrorMsg} from '../components/error_msg';
+import { Url } from "../components/url";
 import { GetTopicConfigsResult } from "../../shared/api";
 import { ConfigEntries } from "kafkajs";
-import { CancelToken, Loader } from "../component/loader";
+import { CancelToken, Loader } from "../components/loader";
 
 // type State = {
 //     loading: boolean;

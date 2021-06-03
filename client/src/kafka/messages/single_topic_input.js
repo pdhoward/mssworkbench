@@ -5,7 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Fetcher, SearchBy, AllPartitions, FetchData } from './fetcher';
-import { Url } from '../../component/url';
+import { Url } from '../../components/url';
 import { GetTopicOffsetsResult, TopicOffsets } from "../../../shared/api";
 
 // interface Props {

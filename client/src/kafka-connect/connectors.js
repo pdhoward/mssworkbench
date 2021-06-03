@@ -1,15 +1,15 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { RouteComponentProps } from "react-router-dom";
-import { KafkaToolbar} from '../component/toolbar';
-import { DataView} from '../component/data_view';
-import { ErrorMsg} from '../component/error_msg';
-import { Url } from "../component/url";
+import { KafkaToolbar} from '../components/toolbar';
+import { DataView} from '../components/data_view';
+import { ErrorMsg} from '../components/error_msg';
+import { Url } from "../components/url";
 import { ConnectorConfig, ConnectorState, GetConnectorConfigResult, GetConnectorsResult, GetConnectorStatusResult } from "../../shared/api";
-import { CellButton, CellProps } from "../component/cell_button";
+import { CellButton, CellProps } from "../components/cell_button";
 import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
 import { History } from 'history';
-import { CancelToken, Loader } from "../component/loader";
+import { CancelToken, Loader } from "../components/loader";
 
 // type State = {
 //     loading: boolean;

@@ -1,15 +1,15 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Slider from '@material-ui/core/Slider';
-import { KafkaToolbar } from '../component/toolbar';
-import { CellProps } from '../component/cell_button';
-import { DataView } from '../component/data_view';
+import { KafkaToolbar } from '../components/toolbar';
+import { CellProps } from '../components/cell_button';
+import { DataView } from '../components/data_view';
 import { RouteComponentProps } from "react-router-dom";
 import Box from '@material-ui/core/Box';
-import { ErrorMsg} from '../component/error_msg';
-import { Url } from "../component/url";
+import { ErrorMsg} from '../components/error_msg';
+import { Url } from "../components/url";
 import { GetTopicConsumerGroupsResult } from "../../shared/api";
-import { CancelToken, Loader } from "../component/loader";
+import { CancelToken, Loader } from "../components/loader";
 
 // type State = {
 //     loading: boolean;

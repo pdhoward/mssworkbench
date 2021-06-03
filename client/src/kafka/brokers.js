@@ -1,13 +1,13 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { RouteComponentProps } from "react-router-dom";
-import { KafkaToolbar} from '../component/toolbar';
-import { DataView} from '../component/data_view';
-import { ErrorMsg} from '../component/error_msg';
-import { Url } from "../component/url";
+import { KafkaToolbar} from '../components/toolbar';
+import { DataView} from '../components/data_view';
+import { ErrorMsg} from '../components/error_msg';
+import { Url } from "../components/url";
 import { Broker, GetClusterResult } from "../../shared/api";
-import { CancelToken, Loader } from "../component/loader";
-import { CellButton, CellProps } from "../component/cell_button";
+import { CancelToken, Loader } from "../components/loader";
+import { CellButton, CellProps } from "../components/cell_button";
 import { History } from 'history';
 
 // type State = {

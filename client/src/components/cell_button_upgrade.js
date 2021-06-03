@@ -1,7 +1,7 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
 import EventNote from '@material-ui/icons/EventNote';
-import { History } from 'history';
+import history from 'history/browser';
 
 // export interface CellProps {
 //     value?: number | string;
@@ -17,7 +17,7 @@ export const CellButton = (props) => {
     if (props.value || props.value === 0) {
         msg = props.value.toString()
     }
-    props.data.history = History
+    props.data.history = history
     return (
         <div style={{ width: "100%", justifyContent: 'left', textAlign: "left", marginTop: -3 }}>
             <Button color="primary" size="small" style={{ justifyContent: 'left', textAlign: "left" }}
