@@ -3,7 +3,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
 import { RouteComponentProps } from "react-router-dom";
-const { CellProps, CellButton } = require('../components/cell_button_upgrade')
+import { CellProps, CellButton } from'../components/cell_button_upgrade'
 import { GridApi, ColumnApi, GridReadyEvent, ModuleRegistry } from 'ag-grid-community';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
@@ -59,6 +59,8 @@ const Portfolios = (props) => {
    
     let gridApi = null;
     let columnApi = null;
+    console.log(`-------------------------debug portfolio-------`)
+    console.log(props)
     let url = new Url(props.location.search, ``)
     let loader= new Loader();    
 
@@ -167,4 +169,4 @@ const Portfolios = (props) => {
     
 }
 
-module.exports = Portfolios
+export default Portfolios

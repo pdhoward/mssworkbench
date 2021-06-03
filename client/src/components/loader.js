@@ -33,6 +33,8 @@ export class CancelToken {
     }
 
    async Fetch(url) {
+       console.log(`----------------------------debug---------------------`)
+       console.log(url)
         try {
             const response = await fetch(url, { signal: this.Signal })
             if (this.Aborted) return null

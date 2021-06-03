@@ -18,7 +18,7 @@ export class Url {
     }
 
      Get(name) {
-        return this.obj[name].toString() || undefined
+        return this.obj[name]?.toString() || undefined
     }
 
     Set(...props) {

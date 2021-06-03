@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, BrowserRouter as Router } from 'react-router-dom'
-const { Portfolios } = require("./business/portfolios")
+import  Portfolios  from "./business/portfolios"
 import { Topics } from "./kafka/topics"
 import { Partitions } from "./kafka/partitions"
 import { Messages } from "./kafka/messages/messages"

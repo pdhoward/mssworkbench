@@ -14,7 +14,7 @@ export function UseSearch(url) {
             style: (url.Get(`search_style`) || ``) 
         }
     }
-    const [search, setSearch] = useState<Search>(getSearch())
+    const [search, setSearch] = useState(getSearch())
     useEffect(() => {
         function onUrlChanged(_) {
             setSearch(getSearch())

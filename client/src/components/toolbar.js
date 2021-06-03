@@ -123,7 +123,7 @@ const SearchButtonGroup = withStyles((theme) => ({
 }))(ToggleButtonGroup);
 
 const useSearchButtonStyles = makeStyles((theme) => ({
-  root: ({selectColor, hoverColor}) => {
+  root: (props) => {
     return {
       '&$selected': {
         backgroundColor: props.selectColor,
