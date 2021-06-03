@@ -1,5 +1,5 @@
 import { Url } from "./url";
-import { SearchStyle } from "../../shared/search";
+import { SearchStyle } from "../shared/search";
 import { useEffect, useState } from "react";
 
 // export type Search = {

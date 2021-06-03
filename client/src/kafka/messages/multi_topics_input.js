@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Fetcher, SearchBy, AllPartitions, FetchData } from './fetcher';
 import { Url } from '../../components/url';
-import { GetTopicsResult } from "../../../shared/api";
+import { GetTopicsResult } from "../../shared/api";
 import { ITopicMetadata } from "kafkajs";
 
 // interface Props {

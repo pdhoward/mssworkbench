@@ -8,7 +8,7 @@ import { RouteComponentProps } from "react-router-dom";
 import Box from '@material-ui/core/Box';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
-import { GetTopicConsumerGroupsResult } from "../../shared/api";
+import { GetTopicConsumerGroupsResult } from "../shared/api";
 import { CancelToken, Loader } from "../components/loader";
 
 // type State = {

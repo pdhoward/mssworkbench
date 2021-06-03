@@ -7,7 +7,7 @@ const { CellProps, CellButton } = require('../components/cell_button_upgrade')
 import { GridApi, ColumnApi, GridReadyEvent, ModuleRegistry } from 'ag-grid-community';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
-import { GetTopicResult, GetTopicsResult, TopicConsumerGroups, TopicOffsets, TopicsOffsets } from "../../shared/api";
+import { GetTopicResult, GetTopicsResult, TopicConsumerGroups, TopicOffsets, TopicsOffsets } from "../shared/api";
 import { DescribeConfigResponse, ITopicMetadata } from "kafkajs";
 import { History } from 'history';
 import { CancelToken, Loader } from "../components/loader";

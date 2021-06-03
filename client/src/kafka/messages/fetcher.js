@@ -10,10 +10,10 @@ import Fade from '@material-ui/core/Fade';
 import { GoButton } from './go_button';
 import { ErrorMsg} from '../../components/error_msg';
 import { Url } from '../../components/url';
-import { SearchStyle } from '../../../shared/search';
+import { SearchStyle } from '../../shared/search';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { GetTopicMessagesResult, GetTopicOffsetsByTimestapResult, GetTopicOffsetsResult, TopicOffsets } from "../../../shared/api";
+import { GetTopicMessagesResult, GetTopicOffsetsByTimestapResult, GetTopicOffsetsResult, TopicOffsets } from "../../shared/api";
 import { CancelToken, Loader } from "../../components/loader";
 
 //export type SearchBy = "offset" | "time" | "newest" | "oldest";

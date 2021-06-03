@@ -22,7 +22,7 @@ import NightsStayIcon from '@material-ui/icons/NightsStay';
 import Icon from '@mdi/react';
 import { mdiRegex, mdiFormatLetterCase } from '@mdi/js';
 import { Url } from './url';
-import { SearchStyle } from '../../shared/search';
+import { SearchStyle } from '../shared/search';
 
 const useStyles = makeStyles((theme) => ({
   root: {

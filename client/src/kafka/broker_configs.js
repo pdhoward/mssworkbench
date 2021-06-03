@@ -6,7 +6,7 @@ import { RouteComponentProps } from "react-router-dom";
 import Link from '@material-ui/core/Link';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
-import { GetBrokerConfigsResult } from "../../shared/api";
+import { GetBrokerConfigsResult } from "../shared/api";
 import { ConfigEntries } from "kafkajs";
 import { CancelToken, Loader } from "../components/loader";
 

@@ -6,7 +6,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { GridApi, ColumnApi, GridReadyEvent } from 'ag-grid-community';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
-import { GetSchemaResult, GetSubjectVersionsResult } from "../../shared/api";
+import { GetSchemaResult, GetSubjectVersionsResult } from "../shared/api";
 import { Schema } from "avsc";
 import { CancelToken, Loader } from "../components/loader";
 

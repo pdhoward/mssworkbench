@@ -7,7 +7,7 @@ import { CellProps, CellButton } from '../components/cell_button';
 import { GridApi, ColumnApi, GridReadyEvent } from 'ag-grid-community';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
-import { GetSubjectsResult, GetSubjectVersionsResult } from "../../shared/api";
+import { GetSubjectsResult, GetSubjectVersionsResult } from "../shared/api";
 import { History } from 'history';
 import { CancelToken, Loader } from "../components/loader";
 

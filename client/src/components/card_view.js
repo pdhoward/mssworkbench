@@ -2,7 +2,7 @@ import React from "react";
 import { useTheme } from './theme_hook';
 import ReactJson from 'react-json-view';
 import { Url } from "./url";
-import { Includes } from "../../shared/search";
+import { Includes } from "../shared/search";
 import { Search, UseSearch } from "./use_search";
 
 // export interface CardViewProps {

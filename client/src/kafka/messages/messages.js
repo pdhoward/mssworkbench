@@ -9,7 +9,7 @@ import { MultiTopicsInput} from './multi_topics_input';
 import Alert from '@material-ui/lab/Alert';
 import { GridReadyEvent, GridApi, ColumnApi, FilterChangedEvent, ColDef, ValueFormatterParams } from 'ag-grid-community';
 import { Url } from "../../components/url";
-import { TopicMessage } from "../../../shared/api";
+import { TopicMessage } from "../../shared/api";
 
 // interface Props extends RouteComponentProps<{ topic?: string, partition?: string, topics?: string }> {
 // }

@@ -5,7 +5,7 @@ import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
-import { Broker, GetClusterResult } from "../../shared/api";
+import { Broker, GetClusterResult } from "../shared/api";
 import { CancelToken, Loader } from "../components/loader";
 import { CellButton, CellProps } from "../components/cell_button";
 import { History } from 'history';

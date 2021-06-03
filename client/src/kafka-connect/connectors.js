@@ -5,7 +5,7 @@ import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
-import { ConnectorConfig, ConnectorState, GetConnectorConfigResult, GetConnectorsResult, GetConnectorStatusResult } from "../../shared/api";
+import { ConnectorConfig, ConnectorState, GetConnectorConfigResult, GetConnectorsResult, GetConnectorStatusResult } from "../shared/api";
 import { CellButton, CellProps } from "../components/cell_button";
 import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
 import { History } from 'history';

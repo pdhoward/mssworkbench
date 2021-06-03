@@ -6,7 +6,7 @@ import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
-import { GetTopicResult, TopicOffsets } from "../../shared/api";
+import { GetTopicResult, TopicOffsets } from "../shared/api";
 import { History } from 'history';
 import { CancelToken, Loader } from "../components/loader";
 

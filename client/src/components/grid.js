@@ -8,7 +8,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import { Search, UseSearch } from "./use_search";
-import { Includes } from "../../shared/search";
+import { Includes } from "../shared/search";
 
 // export interface GridProps {
 //     url: Url;
