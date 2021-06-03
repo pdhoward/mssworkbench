@@ -1,16 +1,16 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { KafkaToolbar} from '../common/toolbar';
-import { DataView} from '../common/data_view';
+import { KafkaToolbar} from '../component/toolbar';
+import { DataView} from '../component/data_view';
 import { RouteComponentProps } from "react-router-dom";
-import { CellProps, CellButton } from '../common/cell_button';
+import { CellProps, CellButton } from '../component/cell_button';
 import { GridApi, ColumnApi, GridReadyEvent } from 'ag-grid-community';
-import { ErrorMsg} from '../common/error_msg';
-import { Url } from "../common/url";
+import { ErrorMsg} from '../component/error_msg';
+import { Url } from "../component/url";
 import { GetTopicResult, GetTopicsResult, TopicConsumerGroups, TopicOffsets, TopicsOffsets } from "../../shared/api";
 import { DescribeConfigResponse, ITopicMetadata } from "kafkajs";
 import { History } from 'history';
-import { CancelToken, Loader } from "../common/loader";
+import { CancelToken, Loader } from "../component/loader";
 
 // type State = {
 //     loading: boolean;
@@ -56,7 +56,7 @@ class ViewMessagesButton  {
 //     num_configs?: number | `Unknown`,
 // }
 
-export class Topics  {
+export class Topics extends React.Component  {
     state = { loading: true, rows: [], error: "", errorPrefix: "" }
     gridApi = null;
     columnApi = null;

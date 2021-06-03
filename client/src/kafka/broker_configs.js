@@ -1,14 +1,14 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { KafkaToolbar } from '../common/toolbar';
-import { DataView } from '../common/data_view';
+import { KafkaToolbar } from '../component/toolbar';
+import { DataView } from '../component/data_view';
 import { RouteComponentProps } from "react-router-dom";
 import Link from '@material-ui/core/Link';
-import { ErrorMsg} from '../common/error_msg';
-import { Url } from "../common/url";
+import { ErrorMsg} from '../component/error_msg';
+import { Url } from "../component/url";
 import { GetBrokerConfigsResult } from "../../shared/api";
 import { ConfigEntries } from "kafkajs";
-import { CancelToken, Loader } from "../common/loader";
+import { CancelToken, Loader } from "../component/loader";
 
 // type State = {
 //     loading: boolean;
@@ -28,7 +28,7 @@ const BrokerConfigLink = (props) => {
     </Link>)
 }
 
-export class BrokerConfigs  {
+export class BrokerConfigs extends React.Component  {
     state= { loading: true, rows: [], data: undefined, error: "" }
     url;
     loader = new Loader()

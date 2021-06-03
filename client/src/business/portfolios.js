@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { KafkaToolbar} from '../common/toolbar';
-import { DataView} from '../common/data_view';
+import { KafkaToolbar} from '../component/toolbar';
+import { DataView} from '../component/data_view';
 import { RouteComponentProps } from "react-router-dom";
-const { CellProps, CellButton } = require('../common/cell_button_upgrade')
+const { CellProps, CellButton } = require('../component/cell_button_upgrade')
 import { GridApi, ColumnApi, GridReadyEvent, ModuleRegistry } from 'ag-grid-community';
-import { ErrorMsg} from '../common/error_msg';
-import { Url } from "../common/url";
+import { ErrorMsg} from '../component/error_msg';
+import { Url } from "../component/url";
 import { GetTopicResult, GetTopicsResult, TopicConsumerGroups, TopicOffsets, TopicsOffsets } from "../../shared/api";
 import { DescribeConfigResponse, ITopicMetadata } from "kafkajs";
 import { History } from 'history';
-import { CancelToken, Loader } from "../common/loader";
+import { CancelToken, Loader } from "../component/loader";
 
 // type State = {
 //     loading: boolean;

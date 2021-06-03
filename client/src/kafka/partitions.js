@@ -1,14 +1,14 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { RouteComponentProps } from "react-router-dom";
-import { CellProps, CellButton } from '../common/cell_button';
-import { KafkaToolbar} from '../common/toolbar';
-import { DataView} from '../common/data_view';
-import { ErrorMsg} from '../common/error_msg';
-import { Url } from "../common/url";
+import { CellProps, CellButton } from '../component/cell_button';
+import { KafkaToolbar} from '../component/toolbar';
+import { DataView} from '../component/data_view';
+import { ErrorMsg} from '../component/error_msg';
+import { Url } from "../component/url";
 import { GetTopicResult, TopicOffsets } from "../../shared/api";
 import { History } from 'history';
-import { CancelToken, Loader } from "../common/loader";
+import { CancelToken, Loader } from "../component/loader";
 
 // type State = {
 //     loading: boolean;
@@ -32,7 +32,7 @@ class ViewMessagesButton  {
 //     history: History<unknown>,
 // }
 
-export class Partitions  {
+export class Partitions extends React.Component  {
     state= { loading: true, rows: [], error: "" }
     url;
     loader = new Loader()

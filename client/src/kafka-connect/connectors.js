@@ -1,15 +1,15 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { RouteComponentProps } from "react-router-dom";
-import { KafkaToolbar} from '../common/toolbar';
-import { DataView} from '../common/data_view';
-import { ErrorMsg} from '../common/error_msg';
-import { Url } from "../common/url";
+import { KafkaToolbar} from '../component/toolbar';
+import { DataView} from '../component/data_view';
+import { ErrorMsg} from '../component/error_msg';
+import { Url } from "../component/url";
 import { ConnectorConfig, ConnectorState, GetConnectorConfigResult, GetConnectorsResult, GetConnectorStatusResult } from "../../shared/api";
-import { CellButton, CellProps } from "../common/cell_button";
+import { CellButton, CellProps } from "../component/cell_button";
 import { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
 import { History } from 'history';
-import { CancelToken, Loader } from "../common/loader";
+import { CancelToken, Loader } from "../component/loader";
 
 // type State = {
 //     loading: boolean;
@@ -43,7 +43,7 @@ export function ReplaceDots(data) {
     return res
 }
 
-export class Connectors  {
+export class Connectors extends React.Component  {
     state = { loading: true, customCols: {cols: {}}, rows: [], error: "" }
     gridApi = null;
     url;

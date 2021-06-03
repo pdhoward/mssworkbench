@@ -1,13 +1,13 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { RouteComponentProps } from "react-router-dom";
-import { KafkaToolbar} from '../common/toolbar';
-import { DataView} from '../common/data_view';
-import { ErrorMsg} from '../common/error_msg';
-import { Url } from "../common/url";
+import { KafkaToolbar} from '../component/toolbar';
+import { DataView} from '../component/data_view';
+import { ErrorMsg} from '../component/error_msg';
+import { Url } from "../component/url";
 import { Broker, GetClusterResult } from "../../shared/api";
-import { CancelToken, Loader } from "../common/loader";
-import { CellButton, CellProps } from "../common/cell_button";
+import { CancelToken, Loader } from "../component/loader";
+import { CellButton, CellProps } from "../component/cell_button";
 import { History } from 'history';
 
 // type State = {
@@ -24,7 +24,7 @@ class ViewConfigsButton  {
     }
 }
 
-export class Brokers  {
+export class Brokers extends React.Component  {
     state = { loading: true, rows: [], error: "" }
     url;
     loader = new Loader()

@@ -1,14 +1,14 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { KafkaToolbar} from '../../common/toolbar';
-import { DataView} from '../../common/data_view';
-import { ErrorMsg} from '../../common/error_msg';
+import { KafkaToolbar} from '../../component/toolbar';
+import { DataView} from '../../component/data_view';
+import { ErrorMsg} from '../../component/error_msg';
 import { SingleTopicInput} from './single_topic_input';
 import { SearchBy, AllPartitions, FetchData} from './fetcher';
 import { MultiTopicsInput} from './multi_topics_input';
 import Alert from '@material-ui/lab/Alert';
 import { GridReadyEvent, GridApi, ColumnApi, FilterChangedEvent, ColDef, ValueFormatterParams } from 'ag-grid-community';
-import { Url } from "../../common/url";
+import { Url } from "../../component/url";
 import { TopicMessage } from "../../../shared/api";
 
 // interface Props extends RouteComponentProps<{ topic?: string, partition?: string, topics?: string }> {
@@ -22,7 +22,7 @@ import { TopicMessage } from "../../../shared/api";
 //     partition?: string;
 // }
 
-export class Messages  {
+export class Messages extends React.Component  {
     state = {
         rows: [],
         customCols: {cols: {}},

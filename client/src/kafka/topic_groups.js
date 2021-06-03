@@ -1,15 +1,15 @@
 import React from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Slider from '@material-ui/core/Slider';
-import { KafkaToolbar } from '../common/toolbar';
-import { CellProps } from '../common/cell_button';
-import { DataView } from '../common/data_view';
+import { KafkaToolbar } from '../component/toolbar';
+import { CellProps } from '../component/cell_button';
+import { DataView } from '../component/data_view';
 import { RouteComponentProps } from "react-router-dom";
 import Box from '@material-ui/core/Box';
-import { ErrorMsg} from '../common/error_msg';
-import { Url } from "../common/url";
+import { ErrorMsg} from '../component/error_msg';
+import { Url } from "../component/url";
 import { GetTopicConsumerGroupsResult } from "../../shared/api";
-import { CancelToken, Loader } from "../common/loader";
+import { CancelToken, Loader } from "../component/loader";
 
 // type State = {
 //     loading: boolean;
@@ -18,7 +18,7 @@ import { CancelToken, Loader } from "../common/loader";
 //     data: GetTopicConsumerGroupsResult;
 // }
 
-class ProgressRenderer {
+class ProgressRenderer extends React.Component {
     render() {
         let offset = this.props.data.offset
         if (offset === -1) {
@@ -48,7 +48,7 @@ class ProgressRenderer {
 //     lag: number,
 // }
 
-export class TopicGroups  {
+export class TopicGroups extends React.Component {
     state = { loading: true, rows: [], data: [], error: "" }
     url;
     loader = new Loader()

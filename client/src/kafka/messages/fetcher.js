@@ -8,13 +8,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import { GoButton } from './go_button';
-import { ErrorMsg} from '../../common/error_msg';
-import { Url } from '../../common/url';
+import { ErrorMsg} from '../../component/error_msg';
+import { Url } from '../../component/url';
 import { SearchStyle } from '../../../shared/search';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { GetTopicMessagesResult, GetTopicOffsetsByTimestapResult, GetTopicOffsetsResult, TopicOffsets } from "../../../shared/api";
-import { CancelToken, Loader } from "../../common/loader";
+import { CancelToken, Loader } from "../../component/loader";
 
 //export type SearchBy = "offset" | "time" | "newest" | "oldest";
 

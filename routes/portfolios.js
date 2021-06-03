@@ -20,7 +20,4 @@ const portfolios = (router) => {
 
 module.exports = portfolios
 
- app.get("/api/topics", async (req, res) => {
-   
- })
  

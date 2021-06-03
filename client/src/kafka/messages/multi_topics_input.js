@@ -7,7 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Fetcher, SearchBy, AllPartitions, FetchData } from './fetcher';
-import { Url } from '../../common/url';
+import { Url } from '../../component/url';
 import { GetTopicsResult } from "../../../shared/api";
 import { ITopicMetadata } from "kafkajs";
 
