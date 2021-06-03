@@ -1,7 +1,7 @@
 export class Loader {
     cancelToken = null;
 
-    async Load(cancelToken) {
+    async Load(CancelToken) {
         this.cancelToken = new CancelToken();
         try {
             await this.cancelToken
@@ -33,7 +33,7 @@ export class CancelToken {
     }
 
    async Fetch(url) {
-       console.log(`----------------------------debug---------------------`)
+       console.log(`----------------------------debug Cancel token fetch---------------------`)
        console.log(url)
         try {
             const response = await fetch(url, { signal: this.Signal })

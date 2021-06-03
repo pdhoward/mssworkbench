@@ -71,13 +71,17 @@ const Portfolios = (props) => {
 
     useEffect(() => {
         async function getData() {
+            console.log(`-----------------portfolio use effect exec --------`)
             await loader.Load(fetchPortfolios)
         }
         getData();
      },[]);
     
 
-    let fetchPortfolios = async (cancelToken) => {
+    let fetchPortfolios = async (cancelToken = CancelToken) => {
+        console.log(`----step 2 - fetchportfolios--------------`)
+        console.log(cancelToken)
+
         const data = await cancelToken.Fetch(`/api/portfolios`)
         if (cancelToken.Aborted) return
         if (data.error) {
