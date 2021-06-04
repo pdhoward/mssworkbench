@@ -78,8 +78,9 @@ const Portfolios = (props) => {
      },[]);
     
 
-    let fetchPortfolios = async (cancelToken = CancelToken) => {
+    let fetchPortfolios = async (cancelToken = new CancelToken()) => {
         console.log(`----step 2 - fetchportfolios--------------`)
+        console.log(typeof cancelToken.Fetch)
         console.log(cancelToken)
 
         const data = await cancelToken.Fetch(`/api/portfolios`)
@@ -91,6 +92,7 @@ const Portfolios = (props) => {
            
             return
         }
+        console.log(`----debug portfolio line 95-----`)
         console.log(data)
         const results = data.topics.map(r => (
             { topic: r.name,
@@ -99,7 +101,7 @@ const Portfolios = (props) => {
               history: props.history } ))
         setLoading(false)
         setRows(results)
-       
+        console.log(results)
         for (const topic of results) {
             await fetchPortfolio(topic, cancelToken)
             if (cancelToken.Aborted) return

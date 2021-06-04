@@ -16,7 +16,7 @@
   "repository": {
     "type": "git",
     "url": ""
-  },
+  },  
   "dependencies": {
     "@ovotech/avro-kafkajs": "^0.7.1",
     "avsc": "^5.7.0",

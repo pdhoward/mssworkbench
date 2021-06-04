@@ -2,7 +2,7 @@
 
 const { g, b, gr, r, y } =  require('../console')
 
-const topics = require('../data/portfolios')
+const topics = require('../data/topic')
 
 const portfolios = (router) => {
 	router.use(async(req, res, next) => {    
