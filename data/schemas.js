@@ -53,6 +53,47 @@ exports.schemas = [
         "required": [ "productId", "productName", "price" ]
       },
       {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://example.com/orders.schema.json",
+        "title": "Order",
+        "description": "Sales orders from Acme's catalog",
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "description": "The unique identifier for the order",
+            "type": "integer"
+          },
+          "customerId": {
+            "description": "Unique identifier of the customer",
+            "type": "string"
+          },
+          "order": {
+            "description": "Order placed by the customer",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "productId": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "integer"
+                },
+                "units": {
+                  "type": "integer"
+                }
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          }
+        }
+      },
+     
+      {
         "$id": "https://example.com/geographical-location.schema.json",
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "title": "geolocation",
@@ -75,8 +116,8 @@ exports.schemas = [
       {
         "$schema": "https://json-schema.org/draft-04/schema#",
         "id": "http://mynet.com/schemas/user.json#",
-        "title": "subscriber profile",
-        "description": "User profile with connections",
+        "title": "Customer",
+        "description": "Customer profile with connections",
         "type": "object",
         "properties": {
           "id": {
