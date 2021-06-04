@@ -104,13 +104,13 @@ const about =               express.Router()
 const header =              express.Router()
 const portfolios =          express.Router({mergeParams: true})
 const signal =              express.Router({mergeParams: true})
-const topic =               express.Router({mergeParams: true})
+const topics =              express.Router({mergeParams: true})
 
 require('../routes/about')(about)
 require('../routes/header')(header)
 require('../routes/portfolios')(portfolios)
 require('../routes/signal')(signal)
-require('../routes/topic')(topic)
+require('../routes/topics')(topics)
 
 /////////////////////////////////////////////////////////
 /////////////////// API CATALOGUE //////////////////////
@@ -128,7 +128,7 @@ app.get('/api/portfolios', [portfolios])
 
 app.get('/api/signal', [toggleState, signal])
 
-app.get('/api/topic:topic', [topic])
+app.get('/api/topics:topic', [topics])
 
 exports.start = async (port) => {
 	const server = createServer(app);
