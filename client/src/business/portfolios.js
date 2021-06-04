@@ -79,9 +79,7 @@ const Portfolios = (props) => {
     
 
     let fetchPortfolios = async (cancelToken = new CancelToken()) => {
-        console.log(`----step 2 - fetchportfolios--------------`)
-        console.log(typeof cancelToken.Fetch)
-        console.log(cancelToken)
+        console.log(`----step 2 - fetchportfolios--------------`)        
 
         const data = await cancelToken.Fetch(`/api/portfolios`)
         if (cancelToken.Aborted) return
@@ -94,8 +92,8 @@ const Portfolios = (props) => {
         }
         console.log(`----debug portfolio line 95-----`)
         console.log(data)
-        const results = data.topics.map(r => (
-            { topic: r.name,
+        const results = data.portfolios.map(r => (
+            { topic: r.topic,
               num_partitions: r.partitions.length, 
               raw: r, 
               history: props.history } ))
@@ -109,7 +107,7 @@ const Portfolios = (props) => {
     }
 
     const fetchPortfolio = async (topic, cancelToken) => {
-        const data = await cancelToken.Fetch(`/api/topic/${topic.topic}`)
+        const data = await cancelToken.Fetch(`/api/topics/${topic.topic}`)
         if (cancelToken.Aborted) return
         if (data.error) {
             setLoading(false)
@@ -118,6 +116,8 @@ const Portfolios = (props) => {
             return
         }
         let sum = 0
+        console.log(`-----------------fetch portfolio----------------`)
+        console.log(data)
         for (const partition of data.offsets) {
             const high = parseInt(partition.high)
             sum += high

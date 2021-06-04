@@ -1,7 +1,7 @@
 
 
  ////////////////////////////fake schemas/////////////////////
-exports.postfolios = [{
+exports.portfolios = [{
     id: "0001",      
     geography: 'global',
     division: 'corporate',

@@ -33,7 +33,7 @@ export class CancelToken {
     }
 
    async Fetch(url) {
-       console.log(`----------------------------debug Cancel token fetch---------------------`)
+       console.log(`-----------INSIDE LOADER----------`)
        console.log(url)
         try {
             const response = await fetch(url, { signal: this.Signal })
@@ -44,7 +44,7 @@ export class CancelToken {
                     const body = JSON.parse(responseTxt)
                     if(!body.error && response.status >= 400) {
                         return { error: `fetch from ${url} returned status code ${response.status}, response: ${responseTxt}` }
-                    }
+                    }                   
                     return body
                 } catch (jsonErr) {
                     if (this.Aborted) return null

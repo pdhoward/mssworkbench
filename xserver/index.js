@@ -128,7 +128,7 @@ app.get('/api/portfolios', [portfolios])
 
 app.get('/api/signal', [toggleState, signal])
 
-app.get('/api/topics:topic', [topics])
+app.get('/api/topics/:topic', [topics])
 
 exports.start = async (port) => {
 	const server = createServer(app);
