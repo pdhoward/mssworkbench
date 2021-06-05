@@ -118,28 +118,33 @@ const Portfolios = (props) => {
         let sum = 0
         console.log(`-----------------fetch portfolio----------------`)
         console.log(data)
-        for (const partition of data.offsets) {
-            const high = parseInt(partition.high)
-            sum += high
+        // for (const partition of data.offsets) {
+        //     const high = parseInt(partition.high)
+        //     sum += high
+        // }
+        // topic.offsets = data.offsets
+        // topic.config = data.config
+        // topic.groups = data.groups
+        // topic.num_messages = sum
+        // if (data.groups) {
+        //     topic.num_groups = data.groups.length
+        // } else {
+        //     topic.num_groups = `Unknown`
+        // }
+        // if (data.config) {
+        //     topic.num_configs = data.config.resources[0].configEntries.length
+        // } else {
+        //     topic.num_configs = `Unknown`
+        // }
+        console.log(`------portfolio line 140 ----`)
+        console.log(rows)
+        console.log(gridApi)
+
+        if (gridApi) {
+            gridApi.refreshCells()
         }
-        topic.offsets = data.offsets
-        topic.config = data.config
-        topic.groups = data.groups
-        topic.num_messages = sum
-        if (data.groups) {
-            topic.num_groups = data.groups.length
-        } else {
-            topic.num_groups = `Unknown`
-        }
-        if (data.config) {
-            topic.num_configs = data.config.resources[0].configEntries.length
-        } else {
-            topic.num_configs = `Unknown`
-        }
-        if (this.gridApi) {
-            this.gridApi.refreshCells()
-        }
-        forceUpdate();
+        
+        //forceUpdate();
     }
 
     const getColumnDefs = () => {
@@ -155,7 +160,7 @@ const Portfolios = (props) => {
     return (
         <>
             <KafkaToolbar
-                title="Topics"
+                title="Portfolio"
                 url={url}
             >
             </KafkaToolbar>
