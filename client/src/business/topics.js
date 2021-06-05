@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {Link} from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
@@ -22,10 +23,13 @@ const ViewPartitionsButton = () => {
 
 const Topics = (props) => {
 
+    const { handle } = useParams()
+
     const [loading, setLoading] = useState(true)
     const [rows, setRows] = useState([])
     const [error, setError] = useState("")
-    const [errorPrefix, setErrorPrefix] = useState("")
+    const [errorPrefix, setErrorPrefix] = useState("")    
+    const [topic, setTopics] = useState(null)
    
     let gridApi = null;
     let columnApi = null;    
@@ -39,13 +43,13 @@ const Topics = (props) => {
 
     useEffect(() => {
         async function getData() {           
-            await loader.Load(fetchPortfolios)
+            await loader.Load(fetchTopics)
         }
         getData();
      },[]);
     
-    let fetchPortfolios = async (cancelToken = new CancelToken()) => {
-        const data = await cancelToken.Fetch(`/api/portfolios`)
+    let fetchTopics = async (cancelToken = new CancelToken()) => {
+        const data = await cancelToken.Fetch(`/api/topics/${handle}`)
         if (cancelToken.Aborted) return
         if (data.error) {
             setLoading(false)
@@ -65,20 +69,27 @@ const Topics = (props) => {
     let cellClick = props => {
         const cellValue = props.valueFormatted ? props.valueFormatted : props.value;
         console.log(cellValue)
-        let url = `/topic/${cellvalue}`
+        let url = `/topic/${cellValue}`
         return (
             "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
           );       
      }
-
+    let cellRenderList = props => {
+        const cellValue = props.valueFormatted ? props.valueFormatted : props.value;
+        console.log(cellValue)
+        let url = `/topic/${cellValue}`
+        return (
+            "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
+            );       
+     }
+    
     const getColumnDefs = () => {
         return [
             { headerName: "Topic", field: "topic", cellRenderer: cellClick },
-            { headerName: "Geo", field: "geography", filter: "agTextColumnFilter" },
-            { headerName: "Division", field: "division", filter: "agTextColumnFilter" },
-            { headerName: "Business Unit", field: "business_unit", filter: "agTextColumnFilter"},
-            { headerName: "Business Process", field: "business_process", filter: "agTextColumnFilter" },
-        ]
+            { headerName: "Description", field: "topic_description", filter: "agTextColumnFilter" },
+            { headerName: "Source Schemas", field: "source_schemas", filter: "agTextColumnFilter", cellRenderer: cellRenderList  },
+            { headerName: "Target Schemas", field: "target_schemas", filter: "agTextColumnFilter", cellRenderer: cellRenderList},
+           ]
     }
    
     return (

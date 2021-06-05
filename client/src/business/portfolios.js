@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {Link, useLocation} from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
@@ -15,8 +16,9 @@ const ViewPartitionsButton = () => {
     return <CellButton getUrl={() => `/topic/partitions/${props.data.topic}`} {...props} />
 }
 
-
 const Portfolios = (props) => {
+    console.log(`----portfolio line 20-------`)
+    console.log(props)
 
     const [loading, setLoading] = useState(true)
     const [rows, setRows] = useState([])
@@ -24,8 +26,9 @@ const Portfolios = (props) => {
     const [errorPrefix, setErrorPrefix] = useState("")
    
     let gridApi = null;
-    let columnApi = null;    
-    let url = new Url(props.location.search, ``)
+    let columnApi = null;  
+    let location = useLocation  
+    let url = new Url(location.search, ``)
     let loader= new Loader();    
 
     let onGridReady = (params) => {        
@@ -61,10 +64,10 @@ const Portfolios = (props) => {
     let cellClick = props => {
         const cellValue = props.valueFormatted ? props.valueFormatted : props.value;
         console.log(cellValue)
-        let url = "https://example.com"
+        let url = `/topic/${cellValue}`
         return (
-            "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
-          );       
+            `<Link to=${url}></Link>`
+          );         
      }
 
     const getColumnDefs = () => {

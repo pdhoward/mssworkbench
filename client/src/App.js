@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Link } from 'react-router-dom'
 import  Portfolios  from "./business/portfolios"
 import  Topics  from "./business/topics"
 import { Partitions } from "./kafka/partitions"
@@ -23,8 +23,8 @@ const App = () => {
 		<GlobalThemeProvider>
 			<Router>
 				<div>
-					<Route path="/" exact component={Portfolios} />					
-					<Route path="/topic/:topic" exact component={Topics} />
+					<Route path='/'><Portfolios /> </Route>					
+					<Route path="/topic/:topic"> <Topics/> </Route>
 					<Route path="/topic/partitions/:topic" exact component={Partitions} />
 					<Route path="/topic/configs/:topic" exact component={TopicConfigs} />
 					<Route path="/topic/consumer_groups/:topic" exact component={TopicGroups} />
