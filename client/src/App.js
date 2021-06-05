@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, BrowserRouter as Router } from 'react-router-dom'
 import  Portfolios  from "./business/portfolios"
-import { Topics } from "./kafka/topics"
+import  Topics  from "./business/topics"
 import { Partitions } from "./kafka/partitions"
 import { Messages } from "./kafka/messages/messages"
 import { TopicConfigs } from "./kafka/topic_configs"
@@ -23,8 +23,8 @@ const App = () => {
 		<GlobalThemeProvider>
 			<Router>
 				<div>
-					<Route path="/" exact component={Portfolios} />
-					<Route path="/topic" exact component={Topics} />
+					<Route path="/" exact component={Portfolios} />					
+					<Route path="/topic/:topic" exact component={Topics} />
 					<Route path="/topic/partitions/:topic" exact component={Partitions} />
 					<Route path="/topic/configs/:topic" exact component={TopicConfigs} />
 					<Route path="/topic/consumer_groups/:topic" exact component={TopicGroups} />

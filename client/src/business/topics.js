@@ -2,10 +2,14 @@ import React, {useState, useEffect} from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
-import { CellButton } from'../components/cell_button_upgrade'
+import { RouteComponentProps } from "react-router-dom";
+import { CellProps, CellButton } from'../components/cell_button_upgrade'
 import { GridApi, ColumnApi, GridReadyEvent, ModuleRegistry } from 'ag-grid-community';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
+import { GetTopicResult, GetTopicsResult, TopicConsumerGroups, TopicOffsets, TopicsOffsets } from "../shared/api";
+import { DescribeConfigResponse, ITopicMetadata } from "kafkajs";
+import { History } from 'history';
 import { CancelToken, Loader } from "../components/loader";
 
 
@@ -16,7 +20,7 @@ const ViewPartitionsButton = () => {
 }
 
 
-const Portfolios = (props) => {
+const Topics = (props) => {
 
     const [loading, setLoading] = useState(true)
     const [rows, setRows] = useState([])
@@ -61,7 +65,7 @@ const Portfolios = (props) => {
     let cellClick = props => {
         const cellValue = props.valueFormatted ? props.valueFormatted : props.value;
         console.log(cellValue)
-        let url = "https://example.com"
+        let url = `/topic/${cellvalue}`
         return (
             "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
           );       
@@ -100,4 +104,4 @@ const Portfolios = (props) => {
     
 }
 
-export default Portfolios
+export default Topics

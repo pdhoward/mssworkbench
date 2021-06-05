@@ -20,7 +20,7 @@ import { Includes } from "../shared/search";
 // }
 
 export const Grid = (props) => {
-    const search = UseSearch(props.url)
+    const search = UseSearch(props.url)   
     let rows = props.rows
     if (search.pattern) {
         rows = rows.filter(r => Includes(props.search(r), search.pattern, search.style))

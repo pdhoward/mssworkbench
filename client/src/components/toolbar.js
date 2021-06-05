@@ -151,7 +151,7 @@ function SearchToggleButton(props) {
 
 export const KafkaToolbar = (props) => {
   const classes = useStyles();
-  const [anchorElement, setAnchorElement] = React.useState(null);
+  const [anchorElement, setAnchorElement] = React.useState(false);
 
   const [searchStyle, setSearchStyle] = React.useState((props.url.Get(`search_style`) || ``) );
   const [searchPattern, setSearchPattern] = React.useState((props.url.Get(`search`) || ``) );
@@ -161,8 +161,9 @@ export const KafkaToolbar = (props) => {
   const searchButtonSelectedColor = theme === `dark` ? `rgb(106, 186, 251)` : `rgb(64,82,181)`
   const searchButtonHoverColor = theme === `dark` ? `rgb(131, 197, 251)` : `rgb(82, 97, 183)`
 
-  const menuOpen = anchorElement
+  const menuOpen = Boolean(anchorElement)
   const openMenu = (event) => {
+    console.log(`---------------debug toolbar line 166-----`)   
     setAnchorElement(event.currentTarget);
   };
   const closeMenu = () => {
@@ -183,12 +184,8 @@ export const KafkaToolbar = (props) => {
             <MenuIcon />
           </IconButton>
           <Menu
-                id="menu-appbar"
+                id="menu-appbar" 
                 anchorEl={anchorElement}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
                 keepMounted
                 transformOrigin={{
                   vertical: 'bottom',

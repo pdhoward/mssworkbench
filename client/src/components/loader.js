@@ -32,9 +32,7 @@ export class CancelToken {
         return this.abortController.signal.aborted
     }
 
-   async Fetch(url) {
-       console.log(`-----------INSIDE LOADER----------`)
-       console.log(url)
+   async Fetch(url) {      
         try {
             const response = await fetch(url, { signal: this.Signal })
             if (this.Aborted) return null
