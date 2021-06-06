@@ -1,120 +1,78 @@
-import React, {useState, useEffect, useContext} from "react";
-import {useLocation} from 'react-router-dom'
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { KafkaToolbar} from '../components/toolbar';
-import { DataView} from '../components/data_view';
-import { RouteComponentProps } from "react-router-dom";
-import { CellProps, CellButton } from'../components/cell_button_upgrade'
-import { GridApi, ColumnApi, GridReadyEvent, ModuleRegistry } from 'ag-grid-community';
-import { ErrorMsg} from '../components/error_msg';
-import { Url } from "../components/url";
-import { GetTopicResult, GetTopicsResult, TopicConsumerGroups, TopicOffsets, TopicsOffsets } from "../shared/api";
-import { DescribeConfigResponse, ITopicMetadata } from "kafkajs";
-import { History } from 'history';
-import { CancelToken, Loader } from "../components/loader";
+import React, { useEffect, useState, useContext } from 'react';
+import { Bar } from 'react-chartjs-2';
 import GridContext from "./gridContext"
 
+const rand = () => Math.round(Math.random() * 20 - 10);
 
-//////////////////example///////////////
+const genData = () => ({
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  datasets: [
+    {
+      label: 'Scale',
+      data: [rand(), rand(), rand(), rand(), rand(), rand()],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+      ],
+      borderWidth: 1,
+    },
+  ],
+});
 
-const ViewPartitionsButton = () => {  
-    return <CellButton getUrl={() => `/topic/partitions/${props.data.topic}`} {...props} />
-}
-
+const options = {
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true,
+        },
+      },
+    ],
+  },
+};
 
 const Topics = (props) => {    
 
-    const [loading, setLoading] = useState(true)
-    const [rows, setRows] = useState([])
-    const [error, setError] = useState("")
-    const [errorPrefix, setErrorPrefix] = useState("")    
-    const [topic, setTopics] = useState(null)
+  const [data, setData] = useState(genData())
+  const {gridTopic} = useContext(GridContext) 
 
-    const {gridTopic} = useContext(GridContext)
-   
-    let gridApi = null;
-    let columnApi = null;
-    let location = useLocation() 
-    let url = new Url(location.search, ``)
-    let loader= new Loader();    
+  useEffect(() => {
+    const interval = setInterval(() => setData(genData()), 5000);
 
-    let onGridReady = (params) => {        
-        gridApi = params.api;
-        columnApi = params.columnApi;
-    }
+    return () => clearInterval(interval);
+  }, []);
 
-    useEffect(() => {       
-        async function getData() {           
-            await loader.Load(fetchTopics)
-        }
-        getData();
-     },[]);
-    
-    let fetchTopics = async (cancelToken = new CancelToken()) => {
-        
-        const data = await cancelToken.Fetch(`/api/topics/${gridTopic}`)
-        if (cancelToken.Aborted) return
-        if (data.error) {
-            setLoading(false)
-            setError(data.error)
-            setErrorPrefix("Failed to fetch portfolios. Error: ")           
-            return
-        }       
-        const results = data.topics.map(r => (
-            { ...r,
-              raw: r, 
-              history: props.history } ))        
-     
-        setLoading(false)       
-        setRows(results)     
-    }
-
-    let cellClick = props => {
-        const cellValue = props.valueFormatted ? props.valueFormatted : props.value;        
-        let url = `/topic/${cellValue}`
-        return (
-            "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
-          );       
-     }
-    let cellRenderList = props => {
-        const cellValue = props.valueFormatted ? props.valueFormatted : props.value;
-        console.log(cellValue)
-        let url = `/topic/${cellValue}`
-        return (
-            "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
-            );       
-     }
-    
-    const getColumnDefs = () => {
-        return [
-            { headerName: "Topic", field: "topic", cellRenderer: cellClick },
-            { headerName: "Description", field: "topic_description", filter: "agTextColumnFilter" },
-            { headerName: "Source Schemas", field: "source_schemas", filter: "agTextColumnFilter", cellRenderer: cellRenderList  },
-            { headerName: "Target Schemas", field: "target_schemas", filter: "agTextColumnFilter", cellRenderer: cellRenderList},
-           ]
-    }
-   
-    return (
-        <>
-            <KafkaToolbar
-                title="Portfolio"
-                url={url}
-            >
-            </KafkaToolbar>
-            {loading && <><CircularProgress /><div>Loading...</div></>}
-            <ErrorMsg error={error} prefix={errorPrefix}></ErrorMsg>
-            {!loading && <DataView
-                search={(r) => r.topic}
-                rows={rows}
-                raw={rows.map(r => ({...r.raw}))}
-                url={url}
-                columnDefs={getColumnDefs()}
-                onGridReady={onGridReady}
-                >
-            </DataView>}
-        </>
-    )
-    
+  return (
+    <>
+      <div className='header'>
+        <h1 className='title'>Dynamic Bar Chart</h1>
+        <div className='links'>
+          <a
+            className='btn btn-gh'
+            href='https://github.com/reactchartjs/react-chartjs-2/blob/master/example/src/charts/Dynamic.js'
+          >
+            Github Source
+          </a>
+        </div>
+      </div>
+      <Bar data={data} options={options} />
+    </>
+  )
 }
+    
+    
+
 
 export default Topics
