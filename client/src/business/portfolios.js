@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {Link, useLocation} from 'react-router-dom'
+import React, {useState, useEffect, useContext} from "react";
+import {useLocation} from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
@@ -8,6 +8,7 @@ import { GridApi, ColumnApi, GridReadyEvent, ModuleRegistry } from 'ag-grid-comm
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
 import { CancelToken, Loader } from "../components/loader";
+import GridContext from "./gridContext"
 
 
 //////////////////example///////////////
@@ -16,18 +17,18 @@ const ViewPartitionsButton = () => {
     return <CellButton getUrl={() => `/topic/partitions/${props.data.topic}`} {...props} />
 }
 
-const Portfolios = (props) => {
-    console.log(`----portfolio line 20-------`)
-    console.log(props)
+const Portfolios = (props) => {    
 
     const [loading, setLoading] = useState(true)
     const [rows, setRows] = useState([])
     const [error, setError] = useState("")
     const [errorPrefix, setErrorPrefix] = useState("")
+
+    const {gridUpdate} = useContext(GridContext)
    
     let gridApi = null;
     let columnApi = null;  
-    let location = useLocation  
+    let location = useLocation() 
     let url = new Url(location.search, ``)
     let loader= new Loader();    
 
@@ -61,12 +62,12 @@ const Portfolios = (props) => {
         setRows(results)     
     }
 
-    let cellClick = props => {
-        const cellValue = props.valueFormatted ? props.valueFormatted : props.value;
-        console.log(cellValue)
-        let url = `/topic/${cellValue}`
+    const cellClick = (props) => {        
+        const cellValue = props.valueFormatted ? props.valueFormatted : props.value; 
+        gridUpdate({gridTopic: cellValue})      
+        let url = `/topic/${cellValue}`       
         return (
-            `<Link to=${url}></Link>`
+            "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
           );         
      }
 

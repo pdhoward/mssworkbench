@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react";
-import {Link} from 'react-router-dom'
+import React, {useState, useEffect, useContext} from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
@@ -12,6 +11,7 @@ import { GetTopicResult, GetTopicsResult, TopicConsumerGroups, TopicOffsets, Top
 import { DescribeConfigResponse, ITopicMetadata } from "kafkajs";
 import { History } from 'history';
 import { CancelToken, Loader } from "../components/loader";
+import GridContext from "./gridContext"
 
 
 //////////////////example///////////////
@@ -41,7 +41,7 @@ const Topics = (props) => {
         columnApi = params.columnApi;
     }
 
-    useEffect(() => {
+    useEffect(() => {       
         async function getData() {           
             await loader.Load(fetchTopics)
         }
@@ -49,7 +49,8 @@ const Topics = (props) => {
      },[]);
     
     let fetchTopics = async (cancelToken = new CancelToken()) => {
-        const data = await cancelToken.Fetch(`/api/topics/${handle}`)
+        const {topic} = useContext(GridContext)
+        const data = await cancelToken.Fetch(`/api/topics/${topic}`)
         if (cancelToken.Aborted) return
         if (data.error) {
             setLoading(false)
@@ -57,10 +58,13 @@ const Topics = (props) => {
             setErrorPrefix("Failed to fetch portfolios. Error: ")           
             return
         }       
-        const results = data.portfolios.map(r => (
+        const results = data.topics.map(r => (
             { ...r,
               raw: r, 
               history: props.history } ))
+        
+        console.log(`-------topics line 66-----`)
+        console.log(results)
 
         setLoading(false)       
         setRows(results)     
