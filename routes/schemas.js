@@ -1,17 +1,17 @@
  
 
 const { g, b, gr, r, y } =  require('../console')
-const topicdata = require('../data/topics')
-const schemas = require('../data/schemas')
+const topics = require('../data/topics')
+const schemadata = require('../data/schemas')
 const apps = require('../data/apps')
 
-const topics = (router) => {
+const schemas = (router) => {
 	router.use(async(req, res, next) => {  
-        console.log(`The topic is ${req.params.topic}`)  
+        console.log(`The topic is ${req.params.schema}`)  
         try {
             //const topics = await withRetry("fetchTopicMetadata", () => kafka.Admin.fetchTopicMetadata())
             // attach an array of objects
-            res.status(200).json(topicdata)
+            res.status(200).json(schemadata)
           }
           catch (error) {
             res.status(500).json({ error: error.toString() })
@@ -20,6 +20,6 @@ const topics = (router) => {
   })
 }
 
-module.exports = topics
+module.exports = schemas
 
  

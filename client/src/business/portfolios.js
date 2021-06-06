@@ -82,7 +82,7 @@ const Portfolios = (props) => {
         }       
         let cellElements = cellArray.map(c => {
             let t = c.trim()
-            return `<a href="/topic/${t}">${c}</a>`
+            return `<a href="/schema/${t}">${c}</a>`
         })
        console.log(cellElements)
         return (
