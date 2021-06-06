@@ -29,7 +29,7 @@ export const Grid = (props) => {
     const cssTheme = theme === `dark` ? `ag-theme-alpine-dark` : `ag-theme-alpine`
     return (
         <div className={cssTheme}>
-            <AgGridReact
+            <AgGridReact                
                 columnDefs={props.columnDefs}
                 rowData={rows}
                 domLayout='autoHeight'

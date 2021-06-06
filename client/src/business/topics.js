@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
+import {useLocation} from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
@@ -21,19 +22,20 @@ const ViewPartitionsButton = () => {
 }
 
 
-const Topics = (props) => {
-
-    const { handle } = useParams()
+const Topics = (props) => {    
 
     const [loading, setLoading] = useState(true)
     const [rows, setRows] = useState([])
     const [error, setError] = useState("")
     const [errorPrefix, setErrorPrefix] = useState("")    
     const [topic, setTopics] = useState(null)
+
+    const {gridTopic} = useContext(GridContext)
    
     let gridApi = null;
-    let columnApi = null;    
-    let url = new Url(props.location.search, ``)
+    let columnApi = null;
+    let location = useLocation() 
+    let url = new Url(location.search, ``)
     let loader= new Loader();    
 
     let onGridReady = (params) => {        
@@ -49,8 +51,8 @@ const Topics = (props) => {
      },[]);
     
     let fetchTopics = async (cancelToken = new CancelToken()) => {
-        const {topic} = useContext(GridContext)
-        const data = await cancelToken.Fetch(`/api/topics/${topic}`)
+        
+        const data = await cancelToken.Fetch(`/api/topics/${gridTopic}`)
         if (cancelToken.Aborted) return
         if (data.error) {
             setLoading(false)
@@ -61,18 +63,14 @@ const Topics = (props) => {
         const results = data.topics.map(r => (
             { ...r,
               raw: r, 
-              history: props.history } ))
-        
-        console.log(`-------topics line 66-----`)
-        console.log(results)
-
+              history: props.history } ))        
+     
         setLoading(false)       
         setRows(results)     
     }
 
     let cellClick = props => {
-        const cellValue = props.valueFormatted ? props.valueFormatted : props.value;
-        console.log(cellValue)
+        const cellValue = props.valueFormatted ? props.valueFormatted : props.value;        
         let url = `/topic/${cellValue}`
         return (
             "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
