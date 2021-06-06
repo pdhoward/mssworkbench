@@ -21,17 +21,19 @@ import { BrokerConfigs } from "./kafka/broker_configs";
 
 
 const App = () => {
-	const [gridTopic, setGridTopic] = useState()
+	const [gridTopic, setGridTopic] = useState('')
 	const gridUpdate = (obj) => {
-		let {gridTopic} = obj 
-		setGridTopic(gridTopic)
+		let {newTopic} = obj 
+		console.log(`-----------app line 27 -------`)
+		console.log(newTopic)
+		setGridTopic(newTopic)
 	}
 	return (
 		<GlobalThemeProvider>
 			<GridContext.Provider value={{gridTopic, gridUpdate}} >
 				<Router>
 					<div>
-						<Route path='/'><Portfolios /> </Route>					
+						<Route path='/' exact component={Portfolios} />				
 						<Route path="/topic/:topic"> <Topics/> </Route>
 						<Route path="/topic/partitions/:topic" exact component={Partitions} />
 						<Route path="/topic/configs/:topic" exact component={TopicConfigs} />

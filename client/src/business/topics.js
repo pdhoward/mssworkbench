@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
+import {useLocation} from 'react-router-dom'
 import { Bar } from 'react-chartjs-2';
 import GridContext from "./gridContext"
+import "./style.css";
 
 const rand = () => Math.round(Math.random() * 20 - 10);
 
@@ -47,6 +49,9 @@ const Topics = (props) => {
 
   const [data, setData] = useState(genData())
   const {gridTopic} = useContext(GridContext) 
+  let location = useLocation()
+  const getTopic = thePath => thePath.substring(thePath.lastIndexOf('/') + 1)
+  let topic = getTopic(location.pathname)
 
   useEffect(() => {
     const interval = setInterval(() => setData(genData()), 5000);
@@ -57,11 +62,11 @@ const Topics = (props) => {
   return (
     <>
       <div className='header'>
-        <h1 className='title'>Dynamic Bar Chart</h1>
+        <h1 className='title'>{topic}</h1>
         <div className='links'>
           <a
             className='btn btn-gh'
-            href='https://github.com/reactchartjs/react-chartjs-2/blob/master/example/src/charts/Dynamic.js'
+            href='https://github.com/pdhoward'
           >
             Github Source
           </a>

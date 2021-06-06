@@ -65,7 +65,7 @@ const Portfolios = (props) => {
 
     const cellClick = (props) => {        
         const cellValue = props.valueFormatted ? props.valueFormatted : props.value; 
-        gridUpdate({gridTopic: cellValue})      
+        gridUpdate({newTopic: cellValue})  
         let url = `/topic/${cellValue}`       
         return (
             "<a href='" + url + "' target='_blank'>" + cellValue + "</a>"
