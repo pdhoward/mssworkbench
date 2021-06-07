@@ -130,7 +130,7 @@ app.get('/api/portfolios', [portfolios])
 
 app.get('/api/signal', [toggleState, signal])
 
-app.get('/api/schemas/:schema', [topics])
+app.get('/api/schemas/:schema', [schemas])
 
 app.get('/api/topics/:topic', [topics])
 

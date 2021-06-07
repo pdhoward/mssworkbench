@@ -1,0 +1,14 @@
+
+
+
+https://github.com/ajv-validator/ajv
+
+https://github.com/ajv-validator/ajv/blob/master/docs/keywords.md
+
+https://www.npmjs.com/package/@cfworker/json-schema
+
+
+
+----
+
+https://json-schema.org/implementations.html#validator-javascript

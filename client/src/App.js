@@ -2,6 +2,7 @@ import React, {createContext, useState} from "react";
 import { Route, BrowserRouter as Router, Link } from 'react-router-dom'
 import  Portfolios  from "./business/portfolios"
 import  Topics  from "./business/topics"
+import  Schemas  from "./business/schemas"
 import { Partitions } from "./kafka/partitions"
 import { Messages } from "./kafka/messages/messages"
 import { TopicConfigs } from "./kafka/topic_configs"
@@ -35,6 +36,7 @@ const App = () => {
 					<div>
 						<Route path='/' exact component={Portfolios} />				
 						<Route path="/topic/:topic"> <Topics/> </Route>
+						<Route path="/schema/:schema"> <Schemas/> </Route>
 						<Route path="/topic/partitions/:topic" exact component={Partitions} />
 						<Route path="/topic/configs/:topic" exact component={TopicConfigs} />
 						<Route path="/topic/consumer_groups/:topic" exact component={TopicGroups} />

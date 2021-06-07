@@ -1,10 +1,10 @@
 
 
-exports.schemas = [
+exports.schemadata = [
     {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "https://example.com/product.schema.json",
-        "title": "Product",
+        "title": "Product",        
         "description": "A product from Acme's catalog",
         "type": "object",
         "properties": {
