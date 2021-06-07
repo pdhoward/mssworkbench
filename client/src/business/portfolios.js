@@ -12,6 +12,13 @@ import GridContext from "./gridContext"
 
 
 //////////////////example///////////////
+/*
+if (location.hostname == 'localhost' ) {
+    url = `http://${'localhost:9999'}${'/api/signal'}`   
+} else {
+    url = 'https://mssworkbench.onrender.com/api/signal'  
+}
+*/
 
 const ViewPartitionsButton = () => {  
     return <CellButton getUrl={() => `/topic/partitions/${props.data.topic}`} {...props} />
@@ -27,7 +34,7 @@ const Portfolios = (props) => {
 
     const {gridUpdate} = useContext(GridContext)   
     
-    let location = useLocation() 
+    let location = useLocation()    
     let url = new Url(location.search, ``)
     let loader= new Loader();    
 
@@ -46,7 +53,14 @@ const Portfolios = (props) => {
      },[]);
     
     let fetchPortfolios = async (cancelToken = new CancelToken()) => {
-        const data = await cancelToken.Fetch(`/api/portfolios`)
+        let urlendpoint = ''
+        if (window.location.hostname == 'localhost' ) {
+            urlendpoint = `http://${'localhost:9999'}${'/api/portfolios'}`   
+        } else {
+            urlendpoint = 'https://mssworkbench.onrender.com/api/portfolios'  
+        }
+
+        const data = await cancelToken.Fetch(urlendpoint)
         if (cancelToken.Aborted) return
         if (data.error) {
             setLoading(false)
