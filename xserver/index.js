@@ -53,8 +53,6 @@ const { g, b, gr, r, y } =                require('../console');
 const app = express();
 const server = createServer(app);
 
-const Port = process.env.RUN_PORT || 5000
-
 //////////////////////////////////////////////////////////////////////////
 ////////////////////  Register Middleware       /////////////////////////
 ////////////////////////////////////////////////////////////////////////
@@ -140,6 +138,6 @@ exports.start = async (port) => {
 	//await kafka.Connect();
 
 	return new Promise((resolve, reject) => {
-		server.listen(Port, resolve);
+		server.listen(port, resolve);
 	});
 };
