@@ -101,6 +101,7 @@ const toggleState = (req, res, next) => {
 const about =               express.Router()
 const header =              express.Router()
 const portfolios =          express.Router({mergeParams: true})
+const algorithms =          express.Router({mergeParams: true})
 const schemas =             express.Router({mergeParams: true})
 const signal =              express.Router({mergeParams: true})
 const topics =              express.Router({mergeParams: true})
@@ -108,6 +109,7 @@ const topics =              express.Router({mergeParams: true})
 require('../routes/about')(about)
 require('../routes/header')(header)
 require('../routes/portfolios')(portfolios)
+require('../routes/algorithms')(algorithms)
 require('../routes/schemas')(schemas)
 require('../routes/signal')(signal)
 require('../routes/topics')(topics)
@@ -135,6 +137,8 @@ app.post('/api/portfolios', [portfolios])
 app.post('/api/signal', [toggleState, signal])
 
 app.post('/api/schemas/', [schemas])
+
+app.post('/api/algorithms/', [algorithms])
 
 //app.get('/api/topics/:topic', [topics])
 

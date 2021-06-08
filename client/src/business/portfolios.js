@@ -94,6 +94,24 @@ const Portfolios = (props) => {
             </div>`           
         );       
      }
+     const algoRenderList = props => {
+        const cellValue = props.valueFormatted ? props.valueFormatted : props.value;        
+        let cellArray = []       
+        if (typeof cellValue == 'string') {
+            cellArray = cellValue.split(',')
+        } else {
+            cellArray = ["undefined"]
+        }       
+        let cellElements = cellArray.map(c => {
+            let t = c.trim()
+            return `<a href="/algorithm/${t}">${c}</a>`
+        })      
+        return (
+            `<div>
+                ${cellElements.map(c => c)}                
+            </div>`           
+        );       
+     }
 
     const getColumnDefs = () => {
         return [
@@ -105,6 +123,7 @@ const Portfolios = (props) => {
             { headerName: "Topic Descr.", field: "topic_description", filter: "agTextColumnFilter" },
             { headerName: "Source Schemas", field: "source_schemas", filter: "agTextColumnFilter", cellRenderer: cellRenderList  },
             { headerName: "Target Schemas", field: "target_schemas", filter: "agTextColumnFilter", cellRenderer: cellRenderList},
+            { headerName: "Algorithms", field: "algorithms", filter: "agTextColumnFilter", cellRenderer: algoRenderList},
         ]
     }
    

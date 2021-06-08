@@ -12,6 +12,7 @@ exports.portfolios = [{
     sub_process: 'finance analytics',
     source_schemas: ['Order', 'Product', 'Customer'],
     target_schemas: [],
+    algorithms: [],
     num_partitions: 6,
     raw: null,
     history: null,

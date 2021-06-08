@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Link } from 'react-router-dom'
 import  Portfolios  from "./business/portfolios"
 import  Topics  from "./business/topics"
 import  Schemas  from "./business/schemas"
+import  Algorithms  from "./business/algorithms"
 import { Partitions } from "./kafka/partitions"
 import { Messages } from "./kafka/messages/messages"
 import { TopicConfigs } from "./kafka/topic_configs"
@@ -19,8 +20,6 @@ import { Connectors } from "./kafka-connect/connectors";
 import { Tasks } from "./kafka-connect/tasks";
 import { BrokerConfigs } from "./kafka/broker_configs";
 
-
-
 const App = () => {
 	const [gridTopic, setGridTopic] = useState('')
 	const gridUpdate = (obj) => {
@@ -35,6 +34,7 @@ const App = () => {
 						<Route path='/' exact component={Portfolios} />				
 						<Route path="/topic/:topic"> <Topics/> </Route>
 						<Route path="/schema/:schema"> <Schemas/> </Route>
+						<Route path="/algorithm/:algorithm"> <Algorithms/> </Route>
 						<Route path="/topic/partitions/:topic" exact component={Partitions} />
 						<Route path="/topic/configs/:topic" exact component={TopicConfigs} />
 						<Route path="/topic/consumer_groups/:topic" exact component={TopicGroups} />
