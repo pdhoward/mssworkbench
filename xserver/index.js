@@ -132,6 +132,7 @@ app.get('/api/schemas/:schema', [schemas])
 
 app.get('/api/topics/:topic', [topics])
 
+
 exports.start = async (port) => {
 	const server = createServer(app);
 
