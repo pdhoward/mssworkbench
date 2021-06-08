@@ -140,6 +140,6 @@ exports.start = async (port) => {
 	//await kafka.Connect();
 
 	return new Promise((resolve, reject) => {
-		server.listen(port, resolve);
+		server.listen(Port, resolve);
 	});
 };

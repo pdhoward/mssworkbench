@@ -11,19 +11,6 @@ import { CancelToken, Loader } from "../components/loader";
 import GridContext from "./gridContext"
 
 
-//////////////////example///////////////
-/*
-if (location.hostname == 'localhost' ) {
-    url = `http://${'localhost:9999'}${'/api/signal'}`   
-} else {
-    url = 'https://mssworkbench.onrender.com/api/signal'  
-}
-*/
-
-const ViewPartitionsButton = () => {  
-    return <CellButton getUrl={() => `/topic/partitions/${props.data.topic}`} {...props} />
-}
-
 const Portfolios = (props) => {    
     const [gridApi, setGridApi] = useState(null)
     const [gridColumnApi, setGridColumnApi] = useState(null);
@@ -59,6 +46,8 @@ const Portfolios = (props) => {
         } else {
             urlendpoint = 'https://mssworkbench.onrender.com/api/portfolios'  
         }
+        console.log(`-----portfolio line 62-----`)
+        console.log(urlendpoint)
 
         const data = await cancelToken.Fetch(urlendpoint)
         if (cancelToken.Aborted) return

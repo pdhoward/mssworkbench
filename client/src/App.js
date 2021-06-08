@@ -25,8 +25,6 @@ const App = () => {
 	const [gridTopic, setGridTopic] = useState('')
 	const gridUpdate = (obj) => {
 		let {newTopic} = obj 
-		console.log(`-----------app line 27 -------`)
-		console.log(newTopic)
 		setGridTopic(newTopic)
 	}
 	return (
