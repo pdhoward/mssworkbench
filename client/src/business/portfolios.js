@@ -23,7 +23,8 @@ const Portfolios = (props) => {
     
     let location = useLocation()    
     let url = new Url(location.search, ``)
-    let loader= new Loader();    
+    let loader= new Loader();     
+    
 
     let onGridReady = (params) => {        
        setGridApi(params.api)
@@ -32,10 +33,12 @@ const Portfolios = (props) => {
        
     }
 
-    useEffect(() => {
+    useEffect(() => {       
+
         async function getData() {           
             await loader.Load(fetchPortfolios)          
         }
+      
         getData();
      },[]);
     
@@ -46,9 +49,7 @@ const Portfolios = (props) => {
         } else {
             urlendpoint = 'https://mssworkbench.onrender.com/api/portfolios'  
         }
-        console.log(`-----portfolio line 62-----`)
-        console.log(urlendpoint)
-
+      
         const data = await cancelToken.Fetch(urlendpoint)
         if (cancelToken.Aborted) return
         if (data.error) {
@@ -86,8 +87,7 @@ const Portfolios = (props) => {
         let cellElements = cellArray.map(c => {
             let t = c.trim()
             return `<a href="/schema/${t}">${c}</a>`
-        })
-       console.log(cellElements)
+        })      
         return (
             `<div>
                 ${cellElements.map(c => c)}                

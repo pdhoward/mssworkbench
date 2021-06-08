@@ -49,11 +49,11 @@ const Topics = (props) => {
 
   const [data, setData] = useState(genData())
   const {gridTopic} = useContext(GridContext) 
-  let location = useLocation()
+  let location = useLocation()  
   const getTopic = thePath => thePath.substring(thePath.lastIndexOf('/') + 1)
   let topic = getTopic(location.pathname)
 
-  useEffect(() => {
+  useEffect(() => {    
     const interval = setInterval(() => setData(genData()), 5000);
 
     return () => clearInterval(interval);

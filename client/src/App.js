@@ -1,5 +1,5 @@
 import React, {createContext, useState} from "react";
-import { Route, HashRouter as Router, Link } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Link } from 'react-router-dom'
 import  Portfolios  from "./business/portfolios"
 import  Topics  from "./business/topics"
 import  Schemas  from "./business/schemas"

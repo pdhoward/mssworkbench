@@ -1,3 +1,6 @@
+
+
+
 export class Loader {
     cancelToken = null;
 
@@ -21,7 +24,8 @@ export class Loader {
     }
 }
 
-export class CancelToken {
+export class CancelToken {    l
+    
     abortController = new AbortController()
 
     get Signal() {
@@ -32,9 +36,16 @@ export class CancelToken {
         return this.abortController.signal.aborted
     }
 
-   async Fetch(url) {      
+   async Fetch(url, opts = {segment: 'empty'}) {  
+       console.log(`---inside loader l 40---`)  
+       console.log(opts)
+       console.log(url)
         try {
-            const response = await fetch(url, { signal: this.Signal })
+            const response = await fetch(url, { 
+                                    method: 'POST', 
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify(opts), 
+                                    signal: this.Signal})
             if (this.Aborted) return null
             try {
                 const responseTxt = await response.text()

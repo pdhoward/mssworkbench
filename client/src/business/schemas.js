@@ -47,11 +47,15 @@ const Schemas = (props) => {
         let t = topic.trim()
         let urlendpoint = ''
         if (window.location.hostname == 'localhost' ) {
-            urlendpoint = `http://${'localhost:9999'}${'/api/schemas/'}${t}`   
+            urlendpoint = `http://${'localhost:9999'}${'/api/schemas/'}`   
         } else {
-            urlendpoint = `https://mssworkbench.onrender.com/api/schemas/${t}` 
+            urlendpoint = `https://mssworkbench.onrender.com/api/schemas/` 
         }
-        const data = await cancelToken.Fetch(urlendpoint) 
+        let opts = {}
+        opts.segment = t
+        console.log(`-----------schema l 55------`)
+        console.log(opts)
+        const data = await cancelToken.Fetch(urlendpoint, opts) 
         console.log(data)
         if (cancelToken.Aborted) return
         if (data.error) {

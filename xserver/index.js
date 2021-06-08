@@ -116,6 +116,12 @@ require('../routes/topics')(topics)
 /////////////////// API CATALOGUE //////////////////////
 ///////////////////////////////////////////////////////
 
+
+app.use((req, res, next) => {
+  console.log(`---start---`)
+  console.log(req.body)
+  next()
+})
 app.use(header)
 app.get('/about', about)
 
@@ -124,14 +130,21 @@ app.get('/api/toggle', (req, res, next) => {
     next()
   })
 
-app.get('/api/portfolios', [portfolios])
+app.post('/api/portfolios', [portfolios])
 
-app.get('/api/signal', [toggleState, signal])
+app.post('/api/signal', [toggleState, signal])
 
-app.get('/api/schemas/:schema', [schemas])
+app.post('/api/schemas/', [schemas])
 
-app.get('/api/topics/:topic', [topics])
+//app.get('/api/topics/:topic', [topics])
 
+app.get('/*', function(req,res) {
+  console.log(path.join(__dirname, '../client/build', 'index.html'))
+  if (!res.headersSent) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  }
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 
 exports.start = async (port) => {
 	const server = createServer(app);
