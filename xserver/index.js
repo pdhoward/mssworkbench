@@ -141,9 +141,8 @@ app.post('/api/schemas/', [schemas])
 app.get('/*', function(req,res) {
   console.log(path.join(__dirname, '../client/build', 'index.html'))
   if (!res.headersSent) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  }
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  } 
 });
 
 exports.start = async (port) => {
