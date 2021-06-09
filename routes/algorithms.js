@@ -6,10 +6,15 @@ const {algodata} = require('../data/algorithms')
 const algorithms = (router) => {
 	router.use(async(req, res, next) => {          
         let unknownAlgorithm = [{title: 'Unknown Algorithm', description: 'Contact support to resolve'} ]
-        console.log(`----schemas l 12----`)
-        console.log(req.body)
-        let algorithm = req.body.segment         
-        let selectedAlgorithm = algodata.filter(s => s.title == algorithm) 
+               
+        let selectedAlgorithm = []
+        let algorithm = req.body.segment 
+        
+        if (algorithm == 'all') {
+          selectedAlgorithm = [...algodata]
+        } else {
+          selectedAlgorithm = algodata.filter(s => s.title == algorithm) 
+        }         
         
         if (selectedAlgorithm.length == 0) {
           selectedAlgorithm = [...unknownAlgorithm]

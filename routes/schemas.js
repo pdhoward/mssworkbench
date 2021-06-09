@@ -6,10 +6,14 @@ const {schemadata} = require('../data/schemas')
 const schemas = (router) => {
 	router.use(async(req, res, next) => {          
         let unknownSchema = [{title: 'Unknown Schema', description: 'Contact support to resolve'} ]
-        console.log(`----schemas l 12----`)
-        console.log(req.body)
-        let schema = req.body.segment         
-        let selectedSchema = schemadata.filter(s => s.title == schema) 
+        
+        let schema = req.body.segment 
+        let selectedSchema = []
+        if (schema == 'all') {
+          selectedSchema = [...schemadata]
+        } else {
+          selectedSchema = schemadata.filter(s => s.title == schema)
+        }         
         
         if (selectedSchema.length == 0) {
           selectedSchema = [...unknownSchema]
@@ -27,7 +31,7 @@ const schemas = (router) => {
           catch (error) {
             res.status(500).json({ error: error.toString() })
           }
-    next() 
+        next() 
   })
 }
 

@@ -50,6 +50,7 @@ const Topics = (props) => {
   const [data, setData] = useState(genData())
   const {gridTopic} = useContext(GridContext) 
   let location = useLocation()  
+  
   const getTopic = thePath => thePath.substring(thePath.lastIndexOf('/') + 1)
   let topic = getTopic(location.pathname)
 

@@ -197,21 +197,15 @@ export const KafkaToolbar = (props) => {
                 <Link href="/" color="inherit">
                   <MenuItem>Portfolio</MenuItem>
                 </Link>
-                <Link href="/brokers" color="inherit">
-                  <MenuItem>Kafka (brokers)</MenuItem>
+                <Link href="/schema/all" color="inherit">
+                  <MenuItem>All Schemas</MenuItem>
                 </Link>
-                <Link href="/groups" color="inherit">
-                  <MenuItem>Kafka (groups)</MenuItem>
-                </Link>
-                <Link href="/schema-registry/subjects" color="inherit">
-                  <MenuItem>Schema-Registry (subjects)</MenuItem>
-                </Link>
-                <Link href="/kafka-connect/connectors" color="inherit">
-                  <MenuItem>Kafka-Connect (connectors)</MenuItem>
-                </Link>
+                <Link href="/algorithm/all" color="inherit">
+                  <MenuItem>All Algorithms</MenuItem>
+                </Link>                
                 <Divider/>
                 <Link href="/topics/messages" color="inherit">
-                  <MenuItem><SearchIcon /> Search across topics</MenuItem>
+                  <MenuItem><SearchIcon /> Search Disabled</MenuItem>
                 </Link>
             </Menu>
           <Typography className={classes.title} variant="h6" noWrap>

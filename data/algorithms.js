@@ -1,7 +1,5 @@
 
-
-exports.algodata = [
-   
+exports.algodata = [   
       {
         "$schema": "https://json-schema.org/draft-04/schema#",
         "id": "http://mynet.com/schemas/user.json#",
@@ -21,6 +19,5 @@ exports.algodata = [
          
           "createdAt": { "type": "string", "format": "date-time" }
         }
-      }
-     
+      }     
 ]

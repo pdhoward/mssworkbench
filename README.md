@@ -34,3 +34,6 @@ https://material-ui.com/components/text-fields/
 samples
 https://mui-treasury.com/styles/text-field/
 
+* hide show components
+https://www.pluralsight.com/guides/how-to-show-and-hide-reactjs-components
+
