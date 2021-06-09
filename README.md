@@ -28,3 +28,9 @@ https://github.com/cloudflare/json-schema-example-loader
 using avj
 https://github.com/ichiki1023/json-schema-example
 
+* - note us of material-ui for forms (see work/backup)
+https://material-ui.com/components/text-fields/
+
+samples
+https://mui-treasury.com/styles/text-field/
+
