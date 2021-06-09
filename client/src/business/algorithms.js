@@ -3,8 +3,6 @@ import {useLocation} from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { KafkaToolbar} from '../components/toolbar';
 import { DataView} from '../components/data_view';
-import { CellButton } from'../components/cell_button_upgrade'
-import { GridApi, ColumnApi, GridReadyEvent, ModuleRegistry } from 'ag-grid-community';
 import { ErrorMsg} from '../components/error_msg';
 import { Url } from "../components/url";
 import { CancelToken, Loader } from "../components/loader";
